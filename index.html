@@ -3,133 +3,481 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Final Exam Quiz - Endocrine Reproductive GI Liver</title>
+<title>Final Exam Quiz - Google Form Style</title>
 <style>
-:root { --bg:#f6f7fb; --card:#fff; --text:#1f2937; --muted:#6b7280; --line:#e5e7eb; --accent:#2563eb; --good:#16a34a; --bad:#dc2626; }
-*{box-sizing:border-box} body{margin:0;font-family:Arial,'Noto Sans Thai',sans-serif;background:var(--bg);color:var(--text)}
-header{position:sticky;top:0;background:rgba(255,255,255,.95);border-bottom:1px solid var(--line);z-index:5;padding:14px 18px}
-header.compact{padding:8px 18px}
-header.compact .hide-when-compact{display:none}
-.header-main{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-.header-left{min-width:220px}
-.toggleHeader{border-radius:999px;padding:8px 12px;background:#f8fafc;white-space:nowrap}
-header.compact .stats{margin-left:auto}
-
-.wrap{max-width:980px;margin:0 auto;padding:18px}
-.top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
-h1{font-size:20px;margin:0} .sub{color:var(--muted);font-size:13px;margin-top:4px}
-.stats{display:flex;gap:8px;flex-wrap:wrap} .pill{padding:8px 12px;background:#eef2ff;border-radius:999px;font-weight:700;font-size:13px}
-.controls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:14px}
-button,select,input{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:white;font-size:14px}
-button{cursor:pointer;font-weight:700} button.primary{background:var(--accent);color:white;border-color:var(--accent)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 5px 18px rgba(0,0,0,.04)}
-.qhead{display:flex;justify-content:space-between;gap:12px;align-items:flex-start} .qnum{font-weight:800;color:var(--accent)} .ref{color:var(--muted);font-size:12px;background:#f3f4f6;border-radius:999px;padding:5px 9px;white-space:nowrap}
-.question{font-size:18px;font-weight:800;line-height:1.45;margin:10px 0 12px}
-.choice{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;border:1px solid var(--line);background:white;border-radius:14px;padding:12px;margin:8px 0;font-weight:500;line-height:1.45}
-.choice:hover{border-color:#93c5fd;background:#eff6ff} .choice.selected{border-color:var(--accent);background:#dbeafe}
-.choice.correct{border-color:var(--good);background:#dcfce7} .choice.wrong{border-color:var(--bad);background:#fee2e2}
-.letter{font-weight:800;min-width:22px} .result{display:none;margin-top:10px;font-weight:800} .result.good{color:var(--good)} .result.bad{color:var(--bad)}
-.footer{position:sticky;bottom:0;background:rgba(246,247,251,.95);border-top:1px solid var(--line);padding:12px 18px} .footer .wrap{display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;padding:0}
-.progressbar{height:10px;background:#e5e7eb;border-radius:999px;overflow:hidden;flex:1;min-width:180px} .progressbar>div{height:100%;background:var(--accent);width:0%}
-.hidden{display:none} .small{font-size:13px;color:var(--muted)}
-@media (max-width:720px){.controls{grid-template-columns:1fr} .question{font-size:16px} header{padding:10px 12px}.toggleHeader{width:100%} header.compact .toggleHeader{width:auto} header.compact .stats{display:none}}
+:root {
+  --bg:#f3e8ff;
+  --form:#ffffff;
+  --purple:#673ab7;
+  --purple-dark:#4b2388;
+  --border:#dadce0;
+  --text:#202124;
+  --muted:#5f6368;
+  --correct-bg:#e6f4ea;
+  --correct:#137333;
+  --wrong-bg:#fce8e6;
+  --wrong:#c5221f;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  font-family: Arial, "Noto Sans Thai", sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.55;
+}
+.container {
+  width:min(760px, 100%);
+  margin:0 auto;
+  padding:18px 12px 90px;
+}
+.top-card {
+  background:var(--form);
+  border:1px solid var(--border);
+  border-top:10px solid var(--purple);
+  border-radius:10px;
+  padding:18px;
+  margin-bottom:14px;
+  box-shadow:0 1px 2px rgba(0,0,0,.08);
+}
+h1 {
+  font-size:26px;
+  margin:0 0 4px;
+  font-weight:600;
+}
+.subtitle {
+  color:var(--muted);
+  font-size:14px;
+}
+.summary {
+  margin-top:14px;
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.pill {
+  background:#f1ecfb;
+  color:var(--purple-dark);
+  padding:7px 12px;
+  border-radius:999px;
+  font-size:13px;
+  font-weight:700;
+}
+.toolbar {
+  background:var(--form);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:12px;
+  margin-bottom:14px;
+  box-shadow:0 1px 2px rgba(0,0,0,.06);
+}
+.toolbar-head {
+  display:flex;
+  gap:10px;
+  align-items:center;
+  justify-content:space-between;
+}
+.toolbar-title {
+  font-weight:700;
+  color:var(--purple-dark);
+}
+button, select, input {
+  font:inherit;
+}
+button {
+  border:1px solid var(--border);
+  background:#fff;
+  border-radius:8px;
+  padding:8px 12px;
+  cursor:pointer;
+  font-weight:700;
+}
+button.primary {
+  background:var(--purple);
+  color:#fff;
+  border-color:var(--purple);
+}
+button.ghost {
+  color:var(--purple);
+}
+.controls {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:10px;
+  margin-top:12px;
+}
+input, select {
+  width:100%;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px 12px;
+  background:#fff;
+}
+.hide {
+  display:none !important;
+}
+.question-card {
+  background:var(--form);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:18px;
+  margin:12px 0;
+  box-shadow:0 1px 2px rgba(0,0,0,.08);
+  position:relative;
+}
+.question-card.correct-card {
+  border-left:8px solid var(--correct);
+}
+.question-card.wrong-card {
+  border-left:8px solid var(--wrong);
+}
+.qtop {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  margin-bottom:8px;
+}
+.qnum {
+  color:var(--muted);
+  font-size:13px;
+  font-weight:700;
+}
+.ref {
+  color:var(--purple-dark);
+  background:#f1ecfb;
+  border-radius:999px;
+  padding:4px 9px;
+  font-size:12px;
+  white-space:nowrap;
+}
+.qtext {
+  font-size:16px;
+  font-weight:600;
+  margin:8px 0 14px;
+}
+.option {
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:8px 6px;
+  border-radius:8px;
+  cursor:pointer;
+  border:1px solid transparent;
+}
+.option:hover {
+  background:#f8f9fa;
+}
+.option input {
+  width:auto;
+  margin-top:5px;
+  accent-color:var(--purple);
+}
+.option.selected {
+  background:#f4efff;
+  border-color:#d7c5ff;
+}
+.option.answer-correct {
+  background:var(--correct-bg);
+  border-color:#b7dfc2;
+}
+.option.answer-wrong {
+  background:var(--wrong-bg);
+  border-color:#f3b7b2;
+}
+.mark {
+  margin-left:auto;
+  font-weight:800;
+  padding-left:8px;
+}
+.ok {
+  color:var(--correct);
+}
+.no {
+  color:var(--wrong);
+}
+.feedback {
+  display:none;
+  margin-top:12px;
+  padding:10px 12px;
+  border-radius:8px;
+  font-weight:700;
+}
+.feedback.show.correct {
+  display:block;
+  background:var(--correct-bg);
+  color:var(--correct);
+}
+.feedback.show.wrong {
+  display:block;
+  background:var(--wrong-bg);
+  color:var(--wrong);
+}
+.answer-note {
+  display:block;
+  margin-top:4px;
+  font-weight:500;
+}
+.bottom-bar {
+  position:fixed;
+  left:0;
+  right:0;
+  bottom:0;
+  background:rgba(255,255,255,.96);
+  border-top:1px solid var(--border);
+  padding:10px 12px;
+  z-index:20;
+}
+.bottom-inner {
+  width:min(760px, 100%);
+  margin:0 auto;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+.progress {
+  flex:1;
+  min-width:150px;
+  height:8px;
+  background:#e8eaed;
+  border-radius:999px;
+  overflow:hidden;
+}
+.progress > div {
+  height:100%;
+  background:var(--purple);
+  width:0%;
+}
+.small {
+  color:var(--muted);
+  font-size:13px;
+}
+@media (min-width:720px) {
+  .controls {
+    grid-template-columns:1fr 1fr 1fr;
+  }
+}
+@media (max-width:520px) {
+  .container {
+    padding-left:8px;
+    padding-right:8px;
+  }
+  h1 {
+    font-size:22px;
+  }
+  .top-card, .toolbar, .question-card {
+    border-radius:8px;
+    padding:14px;
+  }
+  .bottom-inner button {
+    padding:8px 9px;
+    font-size:13px;
+  }
+}
 </style>
 </head>
 <body>
-<header id="pageHeader"><div class="wrap header-main"><div class="header-left hide-when-compact"><h1>Final Exam Quiz</h1><div class="sub">Multiple choice จากเนื้อหา PDF หน้า 1–6 เท่านั้น — ไม่รวมหน้า 7–8</div></div><div class="stats"><span class="pill" id="totalPill">0 ข้อ</span><span class="pill" id="answeredPill">ตอบแล้ว 0</span><span class="pill" id="scorePill">คะแนน 0</span></div><button class="toggleHeader" id="toggleHeader" type="button" onclick="toggleHeader()">ซ่อนแถบด้านบน</button></div><div class="wrap controls hide-when-compact"><input id="search" placeholder="ค้นหาคำถาม เช่น thyroid, CIN, hepatitis"/><select id="topic"><option value="all">ทุกหัวข้อ</option></select><select id="mode"><option value="all">แสดงทุกข้อ</option><option value="unanswered">เฉพาะยังไม่ตอบ</option><option value="wrong">เฉพาะข้อที่ผิด</option></select></div></header>
-<main class="wrap" id="quiz"></main>
-<div class="footer"><div class="wrap"><button class="primary" onclick="checkAll()">ตรวจคำตอบ</button><button onclick="resetQuiz()">เริ่มใหม่</button><button onclick="showAllAnswers()">เฉลยทั้งหมด</button><div class="progressbar"><div id="bar"></div></div><span class="small" id="progressText">0%</span></div></div>
+<div class="container">
+  <section class="top-card">
+    <h1>Final Exam Quiz</h1>
+    <div class="subtitle">Multiple choice จากเนื้อหา PDF หน้า 1–6 เท่านั้น — ไม่รวมหน้า 7–8</div>
+    <div class="summary">
+      <span class="pill" id="totalPill">0 ข้อ</span>
+      <span class="pill" id="answeredPill">ตอบแล้ว 0</span>
+      <span class="pill" id="scorePill">คะแนน 0/0</span>
+    </div>
+  </section>
+
+  <section class="toolbar" id="toolbar">
+    <div class="toolbar-head">
+      <div class="toolbar-title">ค้นหา / กรองข้อสอบ</div>
+      <button class="ghost" type="button" onclick="toggleToolbar()" id="toggleBtn">ซ่อน</button>
+    </div>
+    <div class="controls" id="controls">
+      <input id="search" placeholder="ค้นหาคำถาม เช่น thyroid, CIN, hepatitis" oninput="render()" />
+      <select id="topic" onchange="render()"><option value="all">ทุกหัวข้อ</option></select>
+      <select id="mode" onchange="render()">
+        <option value="all">แสดงทุกข้อ</option>
+        <option value="unanswered">เฉพาะยังไม่ตอบ</option>
+        <option value="wrong">เฉพาะข้อที่ผิด</option>
+        <option value="correct">เฉพาะข้อที่ถูก</option>
+      </select>
+    </div>
+  </section>
+
+  <main id="quiz"></main>
+</div>
+
+<div class="bottom-bar">
+  <div class="bottom-inner">
+    <button class="primary" onclick="checkAll()">ตรวจคำตอบ</button>
+    <button onclick="showAllAnswers()">เฉลยทั้งหมด</button>
+    <button onclick="resetQuiz()">เริ่มใหม่</button>
+    <div class="progress"><div id="bar"></div></div>
+    <span class="small" id="progressText">0%</span>
+  </div>
+</div>
+
 <script>
 const QUESTIONS = [{"q": "โรคของระบบต่อมไร้ท่อแบ่งปัญหาหลักได้เป็นข้อใด", "choices": ["Underproduction, Overproduction, Mass lesion growth", "Infection, Trauma, Allergy", "Inflammation, Necrosis, Fibrosis", "Obstruction, Bleeding, Ulcer"], "answer": 0, "ref": "Endocrine"}, {"q": "Anterior pituitary สร้างฮอร์โมนชุดใด", "choices": ["ADH, Oxytocin", "ACTH, TSH, GH, Prolactin, FSH, LH", "Insulin, Glucagon", "T3, T4, Calcitonin"], "answer": 1, "ref": "Pituitary gland"}, {"q": "Posterior pituitary เกี่ยวข้องกับฮอร์โมนใด", "choices": ["ACTH และ TSH", "GH และ Prolactin", "ADH และ Oxytocin", "FSH และ LH"], "answer": 2, "ref": "Pituitary gland"}, {"q": "สาเหตุที่พบบ่อยของ Hyperpituitarism คืออะไร", "choices": ["Anterior pituitary adenoma", "Sheehan syndrome", "Empty sella syndrome", "Diabetes insipidus"], "answer": 0, "ref": "Hyperpituitarism"}, {"q": "Pituitary adenoma ส่วนใหญ่เป็นเนื้องอกชนิดใด", "choices": ["Malignant", "Benign", "Metastatic", "Inflammatory"], "answer": 1, "ref": "Pituitary adenoma"}, {"q": "Prolactinoma ในผู้หญิงมักทำให้เกิดอาการใด", "choices": ["ประจำเดือนขาด และน้ำนมไหลผิดปกติ", "ตัวเตี้ยแคระ", "ทนร้อนไม่ได้", "นิ่วในไต"], "answer": 0, "ref": "Prolactinoma"}, {"q": "Prolactinoma ในผู้ชายมักทำให้เกิดอาการใด", "choices": ["ตาโปน", "ความต้องการทางเพศลดลงและมีบุตรยาก", "ปัสสาวะมาก", "ถ่ายเหลว"], "answer": 1, "ref": "Prolactinoma"}, {"q": "Somatotropic adenoma สร้างฮอร์โมนใดมากเกิน", "choices": ["Prolactin", "GH", "ACTH", "ADH"], "answer": 1, "ref": "Somatotropic adenoma"}, {"q": "GH สูงในเด็กก่อนกระดูกปิดเรียกว่าอะไร", "choices": ["Acromegaly", "Gigantism", "Cretinism", "Myxedema"], "answer": 1, "ref": "GH excess"}, {"q": "GH สูงในผู้ใหญ่หลัง epiphyseal plate ปิดแล้วเรียกว่าอะไร", "choices": ["Acromegaly", "Gigantism", "Cushing syndrome", "Graves disease"], "answer": 0, "ref": "GH excess"}, {"q": "Acromegaly ทำให้ลักษณะใดเด่น", "choices": ["หน้า มือ เท้า โตหนา", "ผิวหนังหน้าแข้งหนาอย่างเดียว", "ตัวเตี้ยแคระ", "ตกขาวเป็นฟอง"], "answer": 0, "ref": "Acromegaly"}, {"q": "สาเหตุของ Hypopituitarism ตามไฟล์มีข้อใด", "choices": ["Ischemic, Surgery, Radiation, Inflammation, Non-functional pituitary adenoma", "Iodine deficiency อย่างเดียว", "HPV infection", "H. pylori infection"], "answer": 0, "ref": "Hypopituitarism"}, {"q": "Sheehan syndrome คือภาวะใด", "choices": ["ต่อมใต้สมองขาดเลือด/ตายช่วงตั้งครรภ์หรือหลังคลอด", "ไทรอยด์โตจากไอโอดีน", "เนื้องอกต่อมหมวกไต", "โรคตับอ่อนอักเสบ"], "answer": 0, "ref": "Sheehan syndrome"}, {"q": "Diabetes insipidus เกิดจากอะไรเป็นหลัก", "choices": ["Insulin มากเกิน", "ADH ไม่พอหรือขาด", "TSH สูง", "PTH สูง"], "answer": 1, "ref": "Posterior pituitary"}, {"q": "อาการหลักของ Diabetes insipidus คือข้อใด", "choices": ["ปัสสาวะมากและกระหายน้ำมาก", "ไอเป็นเลือด", "ตกขาวคาวปลา", "ปวดท้องเฉียบพลัน"], "answer": 0, "ref": "DI"}, {"q": "Central/Neurogenic DI คืออะไร", "choices": ["ไตไม่ตอบสนองต่อ ADH", "ดื่มน้ำมากเกิน", "ADH ลดลง", "Aldosterone สูง"], "answer": 2, "ref": "DI types"}, {"q": "Nephrogenic DI คืออะไร", "choices": ["ไตไม่ตอบสนองต่อ ADH", "ADH ลดลง", "ต่อมใต้สมองสร้าง ACTH มาก", "ไทรอยด์อักเสบจากไวรัส"], "answer": 0, "ref": "DI types"}, {"q": "Hyperthyroidism ทำให้ metabolism เป็นอย่างไร", "choices": ["ลดลง", "เพิ่มขึ้น", "ไม่เปลี่ยน", "หยุดทำงาน"], "answer": 1, "ref": "Thyroid"}, {"q": "สาเหตุหนึ่งของ Hyperthyroidism คือข้อใด", "choices": ["Graves disease", "DiGeorge syndrome", "Orchitis", "Meckel diverticulum"], "answer": 0, "ref": "Hyperthyroidism"}, {"q": "อาการของ Hyperthyroidism คือข้อใด", "choices": ["หัวใจเต้นเร็ว ทนร้อนไม่ได้ อ่อนแรง ท้องเสีย", "ชักจากแคลเซียมต่ำ", "ปวดท้องกดเจ็บ", "ไส้ติ่งแตก"], "answer": 0, "ref": "Hyperthyroidism"}, {"q": "Graves disease มีลักษณะเด่นข้อใด", "choices": ["ตาโปนและผิวหนังหน้าแข้งหนา", "ปากมดลูก strawberry cervix", "bag of worms", "Mallory bodies"], "answer": 0, "ref": "Graves disease"}, {"q": "Hashimoto thyroiditis เป็นสาเหตุที่พบบ่อยของภาวะใด", "choices": ["Hyperthyroidism", "Hypothyroidism", "Hyperparathyroidism", "Pheochromocytoma"], "answer": 1, "ref": "Hypothyroidism"}, {"q": "Cretinism เกิดจากอะไร", "choices": ["ขาด thyroid hormone ตั้งแต่ทารก โดยสาเหตุหลักคือขาดไอโอดีน", "GH สูงในผู้ใหญ่", "Cortisol สูงจาก steroid", "HPV infection"], "answer": 0, "ref": "Cretinism"}, {"q": "อาการของ Cretinism คือข้อใด", "choices": ["พัฒนาการทางสมองช้าและตัวเตี้ยแคระ", "ความดันสูงเป็นช่วง ๆ", "เลือดออกช่องคลอดไม่เจ็บ", "ปัสสาวะบ่อยแสบยาก"], "answer": 0, "ref": "Cretinism"}, {"q": "Myxedema คืออะไร", "choices": ["ไทรอยด์ต่ำรุนแรงในผู้ใหญ่", "ต่อมพาราไทรอยด์ทำงานมาก", "เบาหวานชนิดที่ 1", "หลอดอาหารโป่ง"], "answer": 0, "ref": "Myxedema"}, {"q": "ผลตรวจของ Myxedema ตามไฟล์คือข้อใด", "choices": ["CK↑, T4↓, TSH↑", "T4↑, TSH↓", "PTH↑, Ca↑", "Na↓, K↑"], "answer": 0, "ref": "Myxedema"}, {"q": "Hashimoto thyroiditis พบเซลล์ลักษณะพิเศษชื่ออะไร", "choices": ["Hurthle cell", "Signet ring cell", "Chromaffin cell", "Leydig cell"], "answer": 0, "ref": "Hashimoto"}, {"q": "Subacute granulomatous thyroiditis มักเกิดจากอะไร", "choices": ["ติด virus", "ขาด vitamin D", "ติด HPV", "ดื่มแอลกอฮอล์"], "answer": 0, "ref": "Subacute thyroiditis"}, {"q": "Subacute granulomatous thyroiditis มีผลตรวจระยะแรกอย่างไร", "choices": ["T4↑, TSH↓", "T4↓, TSH↑", "PTH↑, Ca↑", "Glucose↓"], "answer": 0, "ref": "Subacute thyroiditis"}, {"q": "Diffuse nontoxic goiter หมายถึงอะไร", "choices": ["ต่อมไทรอยด์โตแบบกระจายแต่ไม่มีภาวะฮอร์โมนสูง", "มะเร็งไทรอยด์ที่พบบ่อยที่สุด", "ไทรอยด์อักเสบจากไวรัส", "ADH ต่ำ"], "answer": 0, "ref": "Goiter"}, {"q": "Multinodular goiter สามารถกดอวัยวะใด", "choices": ["Trachea และ esophagus", "Kidney และ bladder", "Ovary และ uterus", "Liver และ pancreas"], "answer": 0, "ref": "Multinodular goiter"}, {"q": "มะเร็งต่อมไทรอยด์ชนิดที่พบบ่อยที่สุดคืออะไร", "choices": ["Papillary carcinoma", "Follicular carcinoma", "Medullary carcinoma", "Anaplastic carcinoma"], "answer": 0, "ref": "Thyroid carcinoma"}, {"q": "Follicular carcinoma ของไทรอยด์พบมากในพื้นที่ใด", "choices": ["พื้นที่ขาดไอโอดีน", "พื้นที่ติดเชื้อ HPV สูง", "พื้นที่มี malaria", "พื้นที่หนาวจัด"], "answer": 0, "ref": "Thyroid carcinoma"}, {"q": "Primary hyperparathyroidism มีผลตรวจอย่างไร", "choices": ["Serum calcium↑, PTH↑", "Serum calcium↓, PTH↓", "T4↑, TSH↓", "Glucose↑, Insulin↑"], "answer": 0, "ref": "Parathyroid"}, {"q": "สาเหตุส่วนใหญ่ของ Primary hyperparathyroidism คืออะไร", "choices": ["Adenoma", "Renal failure", "Vitamin D deficiency", "Thyroidectomy"], "answer": 0, "ref": "Primary hyperparathyroidism"}, {"q": "Secondary hyperparathyroidism พบบ่อยจากสาเหตุใด", "choices": ["Renal failure", "Pituitary adenoma", "H. pylori", "DES exposure"], "answer": 0, "ref": "Secondary hyperparathyroidism"}, {"q": "Hypoparathyroidism ทำให้เกิดอาการจากอะไร", "choices": ["Ca2+ ต่ำ", "Ca2+ สูง", "ADH สูง", "Cortisol สูง"], "answer": 0, "ref": "Hypoparathyroidism"}, {"q": "Cushing syndrome คือภาวะใด", "choices": ["Glucocorticoids/cortisol สูง", "Aldosterone ต่ำ", "Insulin ขาด", "PTH ต่ำ"], "answer": 0, "ref": "Adrenal cortex"}, {"q": "สาเหตุที่พบบ่อยที่สุดของ Cushing syndrome ตามไฟล์คืออะไร", "choices": ["ได้รับยาสเตียรอยด์", "ไอโอดีนต่ำ", "HCV", "Trichomonas"], "answer": 0, "ref": "Cushing"}, {"q": "Primary hyperaldosteronism ทำให้เกิดชุดอาการใด", "choices": ["ความดันสูง, Na↑, K↓", "ความดันต่ำ, Na↓, K↑", "T4↓, TSH↑", "PTH↓, Ca↓"], "answer": 0, "ref": "Hyperaldosteronism"}, {"q": "Adrenogenital syndrome เกี่ยวข้องกับฮอร์โมนใดสูง", "choices": ["Androgens", "ADH", "PTH", "Insulin"], "answer": 0, "ref": "Adrenogenital"}, {"q": "CAH ที่พบบ่อยที่สุดคือ enzyme deficiency ใด", "choices": ["21-hydroxylase deficiency", "Lactase deficiency", "Urease deficiency", "Tyrosine kinase deficiency"], "answer": 0, "ref": "CAH"}, {"q": "Pheochromocytoma เป็นเนื้องอกของเซลล์ใด", "choices": ["Chromaffin cells", "Hurthle cells", "Germ cells", "Glandular epithelium"], "answer": 0, "ref": "Adrenal medulla"}, {"q": "Pheochromocytoma สร้างสารใด", "choices": ["Catecholamines", "Thyroid hormone", "PTH", "Bile salts"], "answer": 0, "ref": "Pheochromocytoma"}, {"q": "อาการเด่นของ Pheochromocytoma คือข้อใด", "choices": ["หัวใจเต้นเร็ว ปวดศีรษะรุนแรง เหงื่อออกมาก ความดันสูงเป็นช่วง ๆ", "ตัวเตี้ยแคระ", "ตกขาวเขียวเป็นฟอง", "ปัสสาวะเป็นเลือด"], "answer": 0, "ref": "Pheochromocytoma"}, {"q": "ระดับน้ำตาลในเลือดปกติที่ไฟล์ระบุคือเท่าใด", "choices": ["70–120 mg/dL", "20–50 mg/dL", "150–250 mg/dL", "300–500 mg/dL"], "answer": 0, "ref": "Diabetes mellitus"}, {"q": "Type I diabetes เกิดจากอะไรเป็นหลัก", "choices": ["ภูมิคุ้มกันทำลาย beta cells", "ดื้อต่อ insulin อย่างเดียว", "PTH สูง", "H. pylori"], "answer": 0, "ref": "Diabetes type I"}, {"q": "Type II diabetes เกิดจากอะไรเป็นหลัก", "choices": ["ดื้อต่ออินซูลินและสร้างอินซูลินผิดปกติ", "ไม่มี insulin ตั้งแต่เด็กเท่านั้น", "ADH ต่ำ", "TSH ต่ำ"], "answer": 0, "ref": "Diabetes type II"}, {"q": "Type II diabetes พบลักษณะทางพยาธิวิทยาใด", "choices": ["Amyloid deposition", "Hurthle cell", "Powder burn spots", "Mallory bodies"], "answer": 0, "ref": "Diabetes type II"}, {"q": "Macrovascular complication ของเบาหวานคือข้อใด", "choices": ["Myocardial infarction และ stroke", "Cataract อย่างเดียว", "Hydrocele", "Vaginitis"], "answer": 0, "ref": "DM complications"}, {"q": "ลักษณะเด่นของ Microvascular disease ในเบาหวานคืออะไร", "choices": ["Diffuse thickening of basement membrane", "Scalloped colloid", "Indian file pattern", "Bag of worms"], "answer": 0, "ref": "DM complications"}, {"q": "Primary amenorrhea หมายถึงอะไร", "choices": ["ไม่เคยมีประจำเดือนเลย", "ขาดประจำเดือน 3–6 เดือนหลังเคยมี", "ตกขาวสีเขียว", "ประจำเดือนมามาก"], "answer": 0, "ref": "Amenorrhea"}, {"q": "Secondary amenorrhea หมายถึงอะไร", "choices": ["ไม่เคยมีประจำเดือนเลย", "ขาดประจำเดือน 3–6 เดือน", "มดลูกโตนุ่มกดเจ็บ", "เลือดออกจากปากมดลูก"], "answer": 1, "ref": "Amenorrhea"}, {"q": "Prolactin สูงส่งผลต่อ GnRH และ LH อย่างไร", "choices": ["GnRH และ LH ลดลง", "GnRH และ LH เพิ่มขึ้น", "ไม่มีผล", "เพิ่มเฉพาะ LH"], "answer": 0, "ref": "Amenorrhea"}, {"q": "Vaginitis จาก Gardnerella vaginalis มีลักษณะใด", "choices": ["pH > 4.5 และตกขาวกลิ่นคาวปลา", "pH < 4.5 และตกขาวขาวข้น", "Strawberry cervix", "Powder burn spots"], "answer": 0, "ref": "Vaginitis"}, {"q": "Trichomoniasis มีลักษณะตกขาวแบบใด", "choices": ["สีเขียวเป็นฟอง", "ขาวข้นเหมือนนมบูด", "ใสไม่มีอาการ", "เลือดออกไม่เจ็บ"], "answer": 0, "ref": "Trichomoniasis"}, {"q": "Candidiasis เกิดจากเชื้อใด", "choices": ["Candida albicans", "Gardnerella vaginalis", "Trichomonas vaginalis", "HPV 16"], "answer": 0, "ref": "Candidiasis"}, {"q": "Candidiasis มี pH โดยทั่วไปเป็นอย่างไร", "choices": ["pH < 4.5", "pH > 4.5", "pH > 8", "pH = 0"], "answer": 0, "ref": "Candidiasis"}, {"q": "Endometriosis คืออะไร", "choices": ["Endometrium อยู่นอกมดลูก", "Endometrial gland อยู่ใน myometrium", "ปากมดลูกอักเสบจาก HPV", "รังไข่มี signet ring cells"], "answer": 0, "ref": "Endometriosis"}, {"q": "Diagnosis ของ Endometriosis อาจพบอะไรจากส่องกล้อง", "choices": ["Powder burn spots", "Snowstorm appearance", "Bag of worms", "Scalloped colloid"], "answer": 0, "ref": "Endometriosis"}, {"q": "Chocolate cyst เกี่ยวข้องกับโรคใด", "choices": ["Endometriosis/endometrioma", "BPH", "Achalasia", "Cushing syndrome"], "answer": 0, "ref": "Endometriosis"}, {"q": "Adenomyosis คืออะไร", "choices": ["Endometrial gland ไปเจริญอยู่ใน myometrium", "Endometrium อยู่นอกมดลูก", "มะเร็งปากมดลูกลุกลาม", "รกผิดปกติ"], "answer": 0, "ref": "Adenomyosis"}, {"q": "Squamous cell carcinoma ของช่องคลอดพบบ่อยในอายุใด", "choices": ["> 60 ปี", "เด็กแรกเกิด", "วัยรุ่นเท่านั้น", "อายุ 25–30 ปี"], "answer": 0, "ref": "Vaginal neoplasms"}, {"q": "Clear cell adenocarcinoma ของช่องคลอดสัมพันธ์กับอะไร", "choices": ["แม่เคยได้รับ DES", "ติด H. pylori", "ดื่มแอลกอฮอล์", "IUD"], "answer": 0, "ref": "Vaginal neoplasms"}, {"q": "Ovarian tumor กลุ่มใดพบบ่อย", "choices": ["Epithelial cell tumors", "Germ cell tumors เท่านั้น", "Metastatic tumors เท่านั้น", "Non-neoplastic polyps"], "answer": 0, "ref": "Ovarian tumor"}, {"q": "ปัจจัยเสี่ยงของ CIN คือข้อใด", "choices": ["ติดเชื้อ HPV, สูบบุหรี่, ขาด Vit A/C/folic acid", "H. pylori, NSAIDs", "HBV, HCV", "Renal failure"], "answer": 0, "ref": "CIN"}, {"q": "CIN I ผิดปกติกี่ส่วนของเยื่อบุ", "choices": ["1/3", "2/3", ">2/3", "เต็มชั้น"], "answer": 0, "ref": "CIN"}, {"q": "CIN II ผิดปกติกี่ส่วนของเยื่อบุ", "choices": ["1/3", "2/3", ">2/3", "ไม่มีความผิดปกติ"], "answer": 1, "ref": "CIN"}, {"q": "CIN III ผิดปกติเท่าใด", "choices": ["1/3", "2/3", ">2/3", "เฉพาะชั้นกล้ามเนื้อ"], "answer": 2, "ref": "CIN"}, {"q": "CIS หมายถึงอะไร", "choices": ["ผิดปกติเต็มชั้นเยื่อบุ", "ผิดปกติ 1/3", "ลุกลามเข้ากล้ามเนื้อแล้วเสมอ", "ไม่มี HPV"], "answer": 0, "ref": "CIN"}, {"q": "Pap smear Bethesda: CIN I + HPV จัดเป็นอะไร", "choices": ["L-SIL", "H-SIL", "CIS เท่านั้น", "IDC"], "answer": 0, "ref": "Pap smear"}, {"q": "Pap smear Bethesda: CIN II, III, CIS จัดเป็นอะไร", "choices": ["L-SIL", "H-SIL", "BPH", "GIST"], "answer": 1, "ref": "Pap smear"}, {"q": "Invasive squamous cell carcinoma of cervix สัมพันธ์กับ HPV ชนิดใด", "choices": ["16 และ 18", "6 และ 11 เท่านั้น", "1 และ 2", "A และ E"], "answer": 0, "ref": "Cervical cancer"}, {"q": "ลำดับการเกิดมะเร็งปากมดลูกคือข้อใด", "choices": ["Dysplasia → CIS → invasive carcinoma", "Invasive → CIS → dysplasia", "CIS → dysplasia → normal", "Normal → metastasis → dysplasia"], "answer": 0, "ref": "Cervical cancer"}, {"q": "Granulosa cell tumor สร้างฮอร์โมนใด", "choices": ["Estrogen", "Androgen เท่านั้น", "Insulin", "ADH"], "answer": 0, "ref": "Sex cord/stromal"}, {"q": "Granulosa cell tumor ในเด็กทำให้เกิดอะไร", "choices": ["Pseudo-precocious puberty", "Cretinism", "Hydrocele", "Achalasia"], "answer": 0, "ref": "Granulosa cell tumor"}, {"q": "Krukenberg’s tumor มักกระจายมาจากที่ใดบ่อยสุด", "choices": ["กระเพาะอาหาร", "ปอด", "สมอง", "ต่อมไทรอยด์"], "answer": 0, "ref": "Krukenberg tumor"}, {"q": "Krukenberg’s tumor พบเซลล์ลักษณะใด", "choices": ["Signet ring cells", "Hurthle cells", "Chromaffin cells", "Leydig cells"], "answer": 0, "ref": "Krukenberg tumor"}, {"q": "Complete mole มีลักษณะโครโมโซมอย่างไร", "choices": ["46,XX จากพ่อเท่านั้น ไม่มีตัวอ่อน", "69,XXY มีพ่อและแม่ มีตัวอ่อนผิดปกติ", "45,X", "47,XXY"], "answer": 0, "ref": "Hydatidiform mole"}, {"q": "Partial mole มีลักษณะอย่างไร", "choices": ["Triploid 69,XXY/69,XXX และมีตัวอ่อนผิดปกติ", "มีแค่โครโมโซมจากพ่อ ไม่มีตัวอ่อน", "ไม่มี trophoblastic cells", "เกิดจาก HPV"], "answer": 0, "ref": "Hydatidiform mole"}, {"q": "Complete mole มีภาพ ultrasound/diagnosis แบบใด", "choices": ["Snowstorm appearance และ honeycomb uterus", "Bag of worms", "Flask-shaped ulcer", "Linitis plastica"], "answer": 0, "ref": "Hydatidiform mole"}, {"q": "Ectopic pregnancy พบบ่อยที่สุดที่ตำแหน่งใด", "choices": ["Ampulla ของท่อนำไข่", "Ovary cortex", "Cervix", "Vagina"], "answer": 0, "ref": "Ectopic pregnancy"}, {"q": "ปัจจัยเสี่ยงของ ectopic pregnancy คือข้อใด", "choices": ["PID, พังผืดในท่อนำไข่, IUD, เคยผ่าตัดช่องท้อง", "H. pylori", "ขาด iodine", "HBV vaccine"], "answer": 0, "ref": "Ectopic pregnancy"}, {"q": "Congenital inguinal hernia เกิดจากอะไร", "choices": ["Inguinal canal ปิดไม่สมบูรณ์", "Urethra เปิดด้านบน", "Pampiniform plexus ขยาย", "Spermatic cord บิด"], "answer": 0, "ref": "Male reproductive"}, {"q": "Hypospadias คือรูเปิดท่อปัสสาวะอยู่ตำแหน่งใด", "choices": ["ด้านล่าง/ventral surface", "ด้านบน/dorsal surface", "ในกระเพาะปัสสาวะ", "ใน scrotum"], "answer": 0, "ref": "Hypospadias"}, {"q": "Epispadias คือรูเปิดท่อปัสสาวะอยู่ตำแหน่งใด", "choices": ["ด้านบน/dorsal surface", "ด้านล่าง/ventral surface", "ที่ anus", "ที่ epididymis"], "answer": 0, "ref": "Epispadias"}, {"q": "Phimosis คืออะไร", "choices": ["หนังหุ้มปลายแคบหรือเปิดไม่ได้", "หนังหุ้มปลายรูดลงแล้วดันกลับไม่ได้", "หลอดเลือดดำขยาย", "น้ำใสสะสม"], "answer": 0, "ref": "Phimosis"}, {"q": "Paraphimosis คืออะไร", "choices": ["หนังหุ้มปลายรูดลงมาแล้วดันกลับไม่ได้จนรัดบวม", "หนังหุ้มปลายแคบตั้งแต่แรก", "อัณฑะไม่ลงถุง", "เลือดสะสมใน tunica vaginalis"], "answer": 0, "ref": "Paraphimosis"}, {"q": "Varicocele คลำได้ลักษณะใด", "choices": ["Bag of worms", "Powder burn spots", "Snowstorm", "Scalloped colloid"], "answer": 0, "ref": "Varicocele"}, {"q": "Varicocele พบมากที่อัณฑะด้านใด", "choices": ["ซ้าย", "ขวา", "สองข้างเท่ากันเสมอ", "ไม่พบที่อัณฑะ"], "answer": 0, "ref": "Varicocele"}, {"q": "Testicular torsion ต้องรักษาอย่างไร", "choices": ["ผ่าตัดด่วนภายใน 6 ชั่วโมง", "ให้ยาลดกรด", "รอหายเอง 1 ปี", "ให้ iodine"], "answer": 0, "ref": "Testicular torsion"}, {"q": "Hydrocele คืออะไร", "choices": ["น้ำใสสะสมใน tunica vaginalis", "เลือดสะสมใน tunica vaginalis", "อสุจิคั่งใน epididymis", "หลอดเลือดดำขยาย"], "answer": 0, "ref": "Hydrocele"}, {"q": "Hydrocele illumination test เป็นอย่างไร", "choices": ["Positive/โปร่งแสง", "Negative/ทึบแสง", "ไม่มีการส่องไฟ", "เป็น false เสมอ"], "answer": 0, "ref": "Hydrocele"}, {"q": "Hematocele illumination test เป็นอย่างไร", "choices": ["Negative/ทึบแสง", "Positive/โปร่งแสง", "เหมือน hydrocele เสมอ", "ไม่ได้เกิดจาก trauma"], "answer": 0, "ref": "Hematocele"}, {"q": "Spermatocele คืออะไร", "choices": ["การคั่งของ spermatozoa ใน epididymis", "น้ำใน tunica vaginalis", "เลือดใน tunica vaginalis", "อัณฑะบิดขั้ว"], "answer": 0, "ref": "Spermatocele"}, {"q": "Cryptorchidism คืออะไร", "choices": ["อัณฑะไม่ลงถุงอัณฑะ", "หนังหุ้มปลายแคบ", "มะเร็งต่อมลูกหมาก", "เต้านมโตในผู้ชาย"], "answer": 0, "ref": "Cryptorchidism"}, {"q": "ถ้า Cryptorchidism ไม่รักษาจะเสี่ยงอะไร", "choices": ["มะเร็งอัณฑะ อัณฑะบิดขั้ว ไส้เลื่อน", "CIN", "Barrett esophagus", "Gallstone"], "answer": 0, "ref": "Cryptorchidism"}, {"q": "Orchitis หลังคางทูมมักเกิดหลัง parotitis กี่วัน", "choices": ["3–4 วัน", "1 ปี", "ทันทีเสมอ", "30 วัน"], "answer": 0, "ref": "Orchitis"}, {"q": "Leydig cell tumor ในเด็กทำให้เกิดอะไร", "choices": ["Precocious puberty", "Cretinism", "Secondary amenorrhea", "Hydatidiform mole"], "answer": 0, "ref": "Leydig cell tumor"}, {"q": "BPH พบบ่อยที่ zone ใดของ prostate", "choices": ["Transitional/Central/Periurethral zone", "Peripheral zone", "Outer upper quadrant", "Ampulla"], "answer": 0, "ref": "BPH"}, {"q": "มะเร็งต่อมลูกหมากพบบ่อยที่ zone ใด", "choices": ["Peripheral zone", "Transitional zone", "Central zone เท่านั้น", "Periurethral zone"], "answer": 0, "ref": "Prostate cancer"}, {"q": "Prostate cancer กระจายไปกระดูกทำให้ค่าใดสูง", "choices": ["Alkaline phosphatase", "Lipase", "CK เท่านั้น", "Anti-HBs"], "answer": 0, "ref": "Prostate cancer"}, {"q": "Acute mastitis เชื้อที่พบบ่อยคืออะไร", "choices": ["Staphylococcus และ Streptococcus", "HPV และ HBV", "H. pylori", "Vibrio cholerae"], "answer": 0, "ref": "Breast"}, {"q": "Breast cancer ประมาณ 50% พบที่ตำแหน่งใด", "choices": ["Outer upper quadrant", "Lower inner quadrant", "Ampulla", "Peripheral zone"], "answer": 0, "ref": "Breast cancer"}, {"q": "ยีนที่เกี่ยวข้องกับ breast cancer ในไฟล์คืออะไร", "choices": ["BRCA1/BRCA2", "c-KIT/PDGFRA", "HBsAg/HBeAg", "FSH/LH"], "answer": 0, "ref": "Breast cancer"}, {"q": "Invasive ductal carcinoma (IDC) มีความสำคัญอย่างไร", "choices": ["พบบ่อยที่สุดและสัมพันธ์กับ DCIS", "พบน้อยและเป็นสองข้างเสมอ", "เป็น benign", "พบเฉพาะผู้ชาย"], "answer": 0, "ref": "Breast cancer"}, {"q": "Invasive lobular carcinoma (ILC) มี pattern ใด", "choices": ["Indian file/linear fashion", "Scalloped colloid", "Bag of worms", "Snowstorm"], "answer": 0, "ref": "Breast cancer"}, {"q": "Gynecomastia เกิดจากฮอร์โมนแบบใด", "choices": ["Estrogen↑ / Testosterone↓", "Estrogen↓ / Testosterone↑", "ADH↑ / Oxytocin↓", "PTH↑ / Ca↑"], "answer": 0, "ref": "Male breast"}, {"q": "Achalasia เกิดจากอะไร", "choices": ["Ganglion cells ของ myenteric plexus เสียหน้าที่", "H. pylori สร้าง urease", "HPV infection", "ADH ลดลง"], "answer": 0, "ref": "Esophagus"}, {"q": "Achalasia ทำให้เกิดอะไร", "choices": ["กลืนลำบาก esophagus ขยาย เสี่ยง esophageal carcinoma", "ท้องเสียเป็นน้ำ", "ตาโปน", "อัณฑะบิด"], "answer": 0, "ref": "Achalasia"}, {"q": "Hiatal hernia แบบใดพบบ่อย", "choices": ["Sliding hernia", "Paraesophageal hernia", "Complete mole", "Hydrocele"], "answer": 0, "ref": "Hiatal hernia"}, {"q": "Barrett’s esophagus เป็นภาวะแทรกซ้อนจากอะไร", "choices": ["GERD นาน ๆ", "PID", "Renal failure", "Mumps"], "answer": 0, "ref": "Barrett"}, {"q": "Barrett’s esophagus เป็นปัจจัยเสี่ยงของมะเร็งใด", "choices": ["Esophageal adenocarcinoma", "Papillary thyroid carcinoma", "Cervical SCC", "Hepatocellular carcinoma"], "answer": 0, "ref": "Barrett"}, {"q": "Barrett’s esophagus มี metaplasia แบบใด", "choices": ["Squamous → columnar", "Columnar → squamous", "Glandular → muscle", "Muscle → nerve"], "answer": 0, "ref": "Barrett"}, {"q": "Erosive gastritis คืออะไร", "choices": ["เยื่อบุกระเพาะถลอกและมีเลือดออก", "กระเพาะหนาแข็งแบบ linitis plastica", "ลำไส้โป่งแต่กำเนิด", "ตับแข็ง"], "answer": 0, "ref": "Gastritis"}, {"q": "NSAIDs ทำให้กระเพาะอักเสบได้เพราะอะไร", "choices": ["ยับยั้ง prostaglandin ทำให้การป้องกันเยื่อบุลดลง", "เพิ่ม mucus bicarbonate", "ฆ่า H. pylori โดยตรง", "เพิ่ม bile salts"], "answer": 0, "ref": "Gastritis"}, {"q": "Chronic gastritis มักเกิดจากเชื้อใด", "choices": ["Helicobacter pylori", "Candida albicans", "HPV 18", "Opisthorchis viverrini"], "answer": 0, "ref": "Chronic gastritis"}, {"q": "Peptic ulcer เกิดจากความไม่สมดุลของอะไร", "choices": ["ตัวป้องกันและตัวทำลายเยื่อบุกระเพาะ", "FSH และ LH", "Estrogen และ progesterone", "Calcium และ PTH"], "answer": 0, "ref": "Peptic ulcer"}, {"q": "ตัวทำลายใน peptic ulcer คือข้อใด", "choices": ["Gastric acid และ pepsin", "Mucus และ bicarbonate", "Prostaglandin และ blood flow", "Albumin และ PT"], "answer": 0, "ref": "Peptic ulcer"}, {"q": "ตัวป้องกันในกระเพาะคือข้อใด", "choices": ["Mucus, bicarbonate, prostaglandin, blood flow", "Acid, pepsin, NSAIDs", "HPV, DES", "HBsAg, HBeAg"], "answer": 0, "ref": "Peptic ulcer"}, {"q": "H. pylori สร้าง enzyme ใดเพื่อเปลี่ยน urea เป็น ammonia", "choices": ["Urease", "Lipase", "Amylase", "Lactase"], "answer": 0, "ref": "H. pylori"}, {"q": "Diffuse infiltrative gastric adenocarcinoma เรียกอีกชื่อว่าอะไร", "choices": ["Linitis plastica", "Barrett’s esophagus", "CIN", "BPH"], "answer": 0, "ref": "Gastric adenocarcinoma"}, {"q": "Gastric adenocarcinoma แบบ diffuse infiltrative พบเซลล์ใด", "choices": ["Signet ring cell", "Hurthle cell", "Chromaffin cell", "Leydig cell"], "answer": 0, "ref": "Gastric adenocarcinoma"}, {"q": "GIST มาจากเซลล์ใด", "choices": ["Interstitial cells of Cajal", "Beta cells", "Chromaffin cells", "Trophoblastic cells"], "answer": 0, "ref": "GIST"}, {"q": "GIST เกี่ยวข้องกับ mutation/marker ใดตามไฟล์", "choices": ["c-KIT และ PDGFRA", "BRCA1 และ BRCA2", "HBsAg และ HBeAg", "FSH และ LH"], "answer": 0, "ref": "GIST"}, {"q": "Meckel’s diverticulum เกิดจากส่วนที่เหลือของอะไร", "choices": ["Vitelline duct", "Common bile duct", "Pancreatic duct", "Inguinal canal"], "answer": 0, "ref": "Meckel"}, {"q": "Meckel’s diverticulum มักอยู่ที่ลำไส้ส่วนใด", "choices": ["Ileum", "Rectum", "Stomach", "Esophagus"], "answer": 0, "ref": "Meckel"}, {"q": "Secretory diarrhea มีลักษณะอย่างไร", "choices": ["หลั่งน้ำ/เกลือมากผิดปกติ ทำให้อุจจาระเป็นน้ำ", "ดึงน้ำเข้าลำไส้จาก lactase deficiency", "อักเสบทำลายเยื่อบุและมีเลือด", "เกิดจากท่อน้ำดีอุดตัน"], "answer": 0, "ref": "Diarrhea"}, {"q": "Osmotic diarrhea สาเหตุหนึ่งคืออะไร", "choices": ["Lactase deficiency", "Vibrio cholerae toxin", "Shigella", "C. difficile"], "answer": 0, "ref": "Diarrhea"}, {"q": "Exudative diarrhea เกิดจากอะไร", "choices": ["การอักเสบ/ทำลายเยื่อบุ เช่น Shigella, Salmonella, E. histolytica", "ขาด lactase อย่างเดียว", "Serotonin จาก tumor", "ADH ต่ำ"], "answer": 0, "ref": "Diarrhea"}, {"q": "Pseudomembranous colitis เกิดจากเชื้อใด", "choices": ["Clostridium difficile", "E. coli", "H. pylori", "Candida albicans"], "answer": 0, "ref": "Pseudomembranous colitis"}, {"q": "Colorectal carcinoma มักเกิดตำแหน่งใด", "choices": ["Sigmoid colon และ rectum", "Ileum เท่านั้น", "Duodenum เท่านั้น", "Esophagus"], "answer": 0, "ref": "Large intestine"}, {"q": "ภาวะแทรกซ้อนของ appendicitis ข้อใดถูกต้อง", "choices": ["Perforation, pylephlebitis, liver abscess, septicemia", "CIN, CIS, H-SIL", "BPH, PSA, ALP", "DI, SIADH"], "answer": 0, "ref": "Appendicitis"}, {"q": "Liver synthetic function ดูจากค่าใด", "choices": ["Albumin และ PT", "AST และ ALT", "Bilirubin และ ALP", "Amylase และ lipase"], "answer": 0, "ref": "LFT"}, {"q": "Hepatocyte injury ดูจากค่าใด", "choices": ["AST และ ALT", "Albumin และ PT", "Bilirubin และ GGT", "PTH และ Ca"], "answer": 0, "ref": "LFT"}, {"q": "Cholestasis ดูจากค่าใด", "choices": ["Bilirubin, ALP, GGT", "Albumin, PT", "FSH, LH", "CK, TSH"], "answer": 0, "ref": "LFT"}, {"q": "Unconjugated bilirubin คือช่วงใด", "choices": ["ก่อนเข้าตับ ไม่ละลายน้ำ", "หลังตับ ละลายน้ำ", "หลังขับออกแล้ว", "เกิดเฉพาะในตับอ่อน"], "answer": 0, "ref": "Bilirubin"}, {"q": "Conjugated bilirubin คือช่วงใด", "choices": ["หลังตับ ละลายน้ำ พร้อมขับออก", "ก่อนเข้าตับ ไม่ละลายน้ำ", "อยู่ในกระดูก", "อยู่ในไตเท่านั้น"], "answer": 0, "ref": "Bilirubin"}, {"q": "สาเหตุของ AST/ALT > 15 แบบ acute ข้อใดถูกต้อง", "choices": ["Acute viral hepatitis, ยา/สารพิษ, ischemic hepatitis, acute bile duct obstruction", "CIN, HPV, DES", "BPH, prostate cancer", "Hydrocele, hematocele"], "answer": 0, "ref": "Liver injury"}, {"q": "Hepatitis A ติดต่อทางใด", "choices": ["กินอาหาร", "เลือดเป็นหลักเท่านั้น", "ยุงกัด", "พันธุกรรม"], "answer": 0, "ref": "Hepatitis A"}, {"q": "IgM anti-HAV บอกอะไร", "choices": ["ระยะ acute/ติดเชื้อใหม่", "มีภูมิหลังหายแล้ว", "ฉีดวัคซีน HBV", "ติดเชื้อ HCV เรื้อรัง"], "answer": 0, "ref": "HAV"}, {"q": "IgG anti-HAV บอกอะไร", "choices": ["หายแล้ว/มีภูมิ", "ติดเชื้อใหม่", "เชื้อแบ่งตัวสูง", "ตับแข็งแล้วเสมอ"], "answer": 0, "ref": "HAV"}, {"q": "Hepatitis B เป็นไวรัสชนิดใด", "choices": ["DNA virus", "RNA virus", "Fungus", "Parasite"], "answer": 0, "ref": "HBV"}, {"q": "HBsAg หมายถึงอะไร", "choices": ["มีเชื้ออยู่ในร่างกาย กำลังติดเชื้อ/แพร่เชื้อได้", "มีภูมิแล้วเท่านั้น", "เคยติดเชื้อแต่หายแน่", "เชื้อ HCV"], "answer": 0, "ref": "HBV"}, {"q": "HBeAg หมายถึงอะไร", "choices": ["เชื้อแบ่งตัวสูงและแพร่เชื้อสูง", "มีภูมิจากวัคซีน", "ติดเชื้อใหม่ HAV", "ไม่มีเชื้อ"], "answer": 0, "ref": "HBV"}, {"q": "Anti-HBs หมายถึงอะไร", "choices": ["มีภูมิ หายแล้วหรือฉีดวัคซีน", "กำลังติดเชื้อแน่นอน", "เชื้อแบ่งตัวสูง", "ตับอ่อนอักเสบ"], "answer": 0, "ref": "HBV"}, {"q": "Hepatitis C เป็นไวรัสชนิดใดและมักเป็นอย่างไร", "choices": ["RNA virus และ chronic infection สูง", "DNA virus และหาย 100%", "Fungus และเกิดเฉพาะเด็ก", "Parasite และอยู่ในท่อน้ำดี"], "answer": 0, "ref": "HCV"}, {"q": "Jaundice หมายถึงอะไร", "choices": ["ตัวเหลือง ตาเหลืองจาก bilirubin สูง", "ปัสสาวะมากจาก ADH ต่ำ", "อัณฑะไม่ลงถุง", "เต้านมโตชาย"], "answer": 0, "ref": "Jaundice"}, {"q": "Alcoholic fatty liver เป็นอย่างไร", "choices": ["ไขมันพอกตับและกลับเป็นปกติได้", "ตับแข็งกลับไม่ได้ทันทีเสมอ", "เกิดจาก HBV เท่านั้น", "เกิดจากนิ่วเท่านั้น"], "answer": 0, "ref": "Alcoholic liver disease"}, {"q": "Alcoholic hepatitis พบอะไรเด่น", "choices": ["Mallory bodies", "Hurthle cells", "Signet ring cells", "Powder burn spots"], "answer": 0, "ref": "Alcoholic hepatitis"}, {"q": "Alcoholic cirrhosis มีลักษณะอย่างไร", "choices": ["ตับแข็ง มีพังผืด กลับเป็นปกติไม่ได้ มี nodule", "ไขมันพอกตับกลับได้ง่าย", "เยื่อบุกระเพาะถลอก", "ท่อนำไข่ฝังตัวผิดที่"], "answer": 0, "ref": "Alcoholic cirrhosis"}, {"q": "Cirrhosis คืออะไร", "choices": ["ตับมีพังผืดกระจายทั่วและมี regenerative nodules", "ตับอ่อนย่อยตัวเอง", "ไทรอยด์โตแบบกระจาย", "ลำไส้ขาดเลือด"], "answer": 0, "ref": "Cirrhosis"}, {"q": "Major causes ของ cirrhosis ตามไฟล์มีข้อใด", "choices": ["Alcoholic liver disease, NAFLD, chronic hepatitis, metabolic disease", "HPV และ DES เท่านั้น", "DI และ Cushing", "Hydrocele และ hematocele"], "answer": 0, "ref": "Cirrhosis"}, {"q": "Wilson’s disease เกิดจากอะไร", "choices": ["ทองแดงสะสมจากขาดโปรตีนส่ง Cu", "เหล็กเกิน", "ไขมันสะสมจาก obesity", "H. pylori"], "answer": 0, "ref": "Metabolic disease"}, {"q": "ภาวะแทรกซ้อนของตับแข็งที่ไฟล์เน้นคืออะไร", "choices": ["Esophageal varices", "CIN", "Cryptorchidism", "BPH"], "answer": 0, "ref": "Cirrhosis complications"}, {"q": "Hepatocellular carcinoma เกี่ยวข้องกับอะไรตามไฟล์", "choices": ["Hep B-C, ดื่มเหล้า, aflatoxin ในถั่วลิสงขึ้นรา", "DES อย่างเดียว", "Candida", "IUD"], "answer": 0, "ref": "HCC"}, {"q": "Cholesterol gallstones เกิดจากอะไร", "choices": ["Cholesterol↑ / bile salt↓ ทำให้ตกผลึก", "Bacteria สร้าง β-glucuronidase เท่านั้น", "พยาธิใบไม้ตับเท่านั้น", "ADH ต่ำ"], "answer": 0, "ref": "Gallstones"}, {"q": "Brown pigment stones ในเอเชียสัมพันธ์กับอะไร", "choices": ["ติดเชื้อในท่อน้ำดี เช่น E. coli และอาจพบร่วมกับ Ascaris", "ขาด iodine", "HPV 16/18", "BRCA1"], "answer": 0, "ref": "Gallstones"}, {"q": "Cholangiocarcinoma สัมพันธ์กับพยาธิใด", "choices": ["Opisthorchis viverrini", "H. pylori", "Candida albicans", "Trichomonas vaginalis"], "answer": 0, "ref": "Cholangiocarcinoma"}, {"q": "อาหารที่เร่งความเสี่ยง cholangiocarcinoma ตามไฟล์คืออะไร", "choices": ["อาหารหมักดอง เช่นปลาร้า ปลาเจ่า ปลาจ่อม ปลาส้ม มี nitrosamines", "นมที่มี lactose", "อาหารที่มี iodine", "ผักใบเขียว"], "answer": 0, "ref": "Cholangiocarcinoma"}, {"q": "สาเหตุที่พบบ่อยที่สุดของ acute pancreatitis คืออะไร", "choices": ["นิ่ว gallstone", "HPV", "DES", "Cryptorchidism"], "answer": 0, "ref": "Acute pancreatitis"}, {"q": "กลไกสำคัญของ acute pancreatitis คืออะไร", "choices": ["เอนไซม์ตับอ่อนย่อยตับอ่อนเอง", "ADH ขาด", "PTH สูง", "Trophoblastic cells เจริญผิดปกติ"], "answer": 0, "ref": "Acute pancreatitis"}, {"q": "การตรวจ acute pancreatitis ใช้ค่าใด", "choices": ["Amylase หรือ lipase", "PSA อย่างเดียว", "HBsAg อย่างเดียว", "PTH อย่างเดียว"], "answer": 0, "ref": "Acute pancreatitis"}, {"q": "Lipase เมื่อเทียบกับ amylase ใน pancreatitis เป็นอย่างไร", "choices": ["แม่นกว่าและอยู่ได้นานกว่า", "ขึ้นเร็วลงเร็วและไม่จำเพาะกว่า", "ใช้ไม่ได้เลย", "เป็น marker ของ prostate"], "answer": 0, "ref": "Acute pancreatitis"}];
-let state = QUESTIONS.map(q => ({selected:null, checked:false}));
-let shuffledChoices = [];
-function shuffleArray(arr) {
-  const a = arr.slice();
-  for(let i=a.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
-  return a;
-}
-function prepareChoices() {
-  shuffledChoices = QUESTIONS.map((q, qi) => shuffleArray(q.choices.map((c, i)=>({text:c, original:i}))));
-}
-function buildTopics() {
-  const sel = document.getElementById('topic');
-  const topics = [...new Set(QUESTIONS.map(q=>q.ref))].sort();
-  for(const t of topics) { const opt=document.createElement('option'); opt.value=t; opt.textContent=t; sel.appendChild(opt); }
-}
-function filteredIndexes() {
-  const s = document.getElementById('search').value.trim().toLowerCase();
-  const t = document.getElementById('topic').value;
-  const m = document.getElementById('mode').value;
-  return QUESTIONS.map((q,i)=>({q,i})).filter(({q,i})=> {
-    const matchSearch = !s || (q.q + ' ' + q.choices.join(' ') + ' ' + q.ref).toLowerCase().includes(s);
-    const matchTopic = t==='all' || q.ref===t;
-    const answered = state[i].selected !== null;
-    const wrong = state[i].checked && state[i].selected !== q.answer;
-    const matchMode = m==='all' || (m==='unanswered' && !answered) || (m==='wrong' && wrong);
-    return matchSearch && matchTopic && matchMode;
-  }).map(x=>x.i);
-}
-function render() {
-  const root = document.getElementById('quiz'); root.innerHTML='';
-  const idxs = filteredIndexes();
-  if(!idxs.length) { root.innerHTML='<div class="card">ไม่พบคำถามตาม filter นี้</div>'; updateStats(); return; }
-  idxs.forEach((i, pos)=> {
-    const q=QUESTIONS[i]; const card=document.createElement('section'); card.className='card';
-    const choices = shuffledChoices[i];
-    card.innerHTML = `<div class="qhead"><div class="qnum">ข้อที่ ${i+1} / ${QUESTIONS.length}</div><div class="ref">${q.ref}</div></div><div class="question">${escapeHtml(q.q)}</div><div class="choices"></div><div class="result" id="res-${i}"></div>`;
-    const box=card.querySelector('.choices');
-    choices.forEach((ch, ci)=> {
-      const btn=document.createElement('button'); btn.className='choice';
-      if(state[i].selected===ch.original) btn.classList.add('selected');
-      if(state[i].checked) {
-        if(ch.original===q.answer) btn.classList.add('correct');
-        if(state[i].selected===ch.original && ch.original!==q.answer) btn.classList.add('wrong');
-      }
-      btn.innerHTML=`<span class="letter">${String.fromCharCode(65+ci)}.</span><span>${escapeHtml(ch.text)}</span>`;
-      btn.onclick=()=>selectAnswer(i,ch.original);
-      box.appendChild(btn);
-    });
-    root.appendChild(card);
-    updateResult(i);
-  });
-  updateStats();
-}
-function escapeHtml(s) { return String(s).replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])); }
-function selectAnswer(i, original) { state[i].selected=original; state[i].checked=false; render(); }
-function checkAll() { state.forEach((st,i)=>{ if(st.selected!==null) st.checked=true; }); render(); window.scrollTo({top:0,behavior:'smooth'}); }
-function showAllAnswers() { state.forEach((st,i)=>{ st.checked=true; if(st.selected===null) st.selected=QUESTIONS[i].answer; }); render(); }
-function resetQuiz() { state = QUESTIONS.map(q => ({selected:null, checked:false})); prepareChoices(); render(); window.scrollTo({top:0,behavior:'smooth'}); }
-function updateResult(i) {
-  const el=document.getElementById('res-'+i); if(!el) return;
-  const st=state[i]; if(!st.checked || st.selected===null) { el.style.display='none'; return; }
-  const ok = st.selected===QUESTIONS[i].answer; el.style.display='block'; el.className='result '+(ok?'good':'bad');
-  el.textContent = ok ? 'ถูกต้อง' : 'ผิด — คำตอบที่ถูกคือ: ' + QUESTIONS[i].choices[QUESTIONS[i].answer];
+
+let state = QUESTIONS.map(() => ({ selected: null, checked: false }));
+
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[s]));
 }
 
-function applyHeaderState() {
-  const compact = localStorage.getItem('quizHeaderCompact') === '1';
-  document.getElementById('pageHeader').classList.toggle('compact', compact);
-  document.getElementById('toggleHeader').textContent = compact ? 'แสดงแถบค้นหา' : 'ซ่อนแถบด้านบน';
+function toggleToolbar() {
+  const controls = document.getElementById("controls");
+  const btn = document.getElementById("toggleBtn");
+  controls.classList.toggle("hide");
+  btn.textContent = controls.classList.contains("hide") ? "แสดง" : "ซ่อน";
 }
-function toggleHeader() {
-  const compact = !document.getElementById('pageHeader').classList.contains('compact');
-  localStorage.setItem('quizHeaderCompact', compact ? '1' : '0');
-  applyHeaderState();
+
+function buildTopics() {
+  const sel = document.getElementById("topic");
+  const topics = [...new Set(QUESTIONS.map(q => q.ref))].sort();
+  for (const t of topics) {
+    const opt = document.createElement("option");
+    opt.value = t;
+    opt.textContent = t;
+    sel.appendChild(opt);
+  }
+}
+
+function filteredIndexes() {
+  const s = document.getElementById("search").value.trim().toLowerCase();
+  const t = document.getElementById("topic").value;
+  const m = document.getElementById("mode").value;
+  return QUESTIONS.map((q, i) => ({ q, i })).filter(({q, i}) => {
+    const joined = (q.q + " " + q.choices.join(" ") + " " + q.ref).toLowerCase();
+    const matchSearch = !s || joined.includes(s);
+    const matchTopic = t === "all" || q.ref === t;
+    const answered = state[i].selected !== null;
+    const correct = state[i].checked && state[i].selected === q.answer;
+    const wrong = state[i].checked && state[i].selected !== null && state[i].selected !== q.answer;
+    const matchMode =
+      m === "all" ||
+      (m === "unanswered" && !answered) ||
+      (m === "wrong" && wrong) ||
+      (m === "correct" && correct);
+    return matchSearch && matchTopic && matchMode;
+  }).map(x => x.i);
+}
+
+function render() {
+  const root = document.getElementById("quiz");
+  root.innerHTML = "";
+  const idxs = filteredIndexes();
+  if (!idxs.length) {
+    root.innerHTML = '<section class="question-card">ไม่พบคำถามตาม filter นี้</section>';
+    updateStats();
+    return;
+  }
+
+  for (const i of idxs) {
+    const q = QUESTIONS[i];
+    const checked = state[i].checked;
+    const selected = state[i].selected;
+    const isCorrect = checked && selected === q.answer;
+    const isWrong = checked && selected !== null && selected !== q.answer;
+
+    const card = document.createElement("section");
+    card.className = "question-card" + (isCorrect ? " correct-card" : "") + (isWrong ? " wrong-card" : "");
+
+    const optionsHtml = q.choices.map((choice, ci) => {
+      const optSelected = selected === ci;
+      const correctOpt = checked && ci === q.answer;
+      const wrongOpt = checked && optSelected && ci !== q.answer;
+      let cls = "option";
+      if (optSelected) cls += " selected";
+      if (correctOpt) cls += " answer-correct";
+      if (wrongOpt) cls += " answer-wrong";
+      const mark = correctOpt ? '<span class="mark ok">✓</span>' : (wrongOpt ? '<span class="mark no">✕</span>' : "");
+      return `
+        <label class="${cls}">
+          <input type="radio" name="q-${i}" ${optSelected ? "checked" : ""} onchange="selectAnswer(${i}, ${ci})" />
+          <span>${escapeHtml(choice)}</span>
+          ${mark}
+        </label>`;
+    }).join("");
+
+    let feedbackClass = "feedback";
+    let feedbackText = "";
+    if (checked) {
+      if (isCorrect) {
+        feedbackClass += " show correct";
+        feedbackText = `ตอบถูก`;
+      } else {
+        feedbackClass += " show wrong";
+        feedbackText = `ตอบผิด <span class="answer-note">คำตอบที่ถูก: ${escapeHtml(q.choices[q.answer])}</span>`;
+      }
+    }
+
+    card.innerHTML = `
+      <div class="qtop">
+        <div class="qnum">ข้อที่ ${i + 1} / ${QUESTIONS.length}</div>
+        <div class="ref">${escapeHtml(q.ref)}</div>
+      </div>
+      <div class="qtext">${escapeHtml(q.q)}</div>
+      <div class="options">${optionsHtml}</div>
+      <div class="${feedbackClass}">${feedbackText}</div>
+    `;
+    root.appendChild(card);
+  }
+  updateStats();
+}
+
+function selectAnswer(i, ci) {
+  state[i].selected = ci;
+  state[i].checked = false;
+  updateStats();
+  render();
+}
+
+function checkAll() {
+  state.forEach((s) => {
+    if (s.selected !== null) s.checked = true;
+  });
+  updateStats();
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showAllAnswers() {
+  state.forEach((s, i) => {
+    if (s.selected === null) s.selected = QUESTIONS[i].answer;
+    s.checked = true;
+  });
+  updateStats();
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function resetQuiz() {
+  if (!confirm("เริ่มใหม่ทั้งหมดใช่ไหม?")) return;
+  state = QUESTIONS.map(() => ({ selected: null, checked: false }));
+  updateStats();
+  render();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function updateStats() {
-  const answered=state.filter(s=>s.selected!==null).length;
-  const checked=state.filter(s=>s.checked).length;
-  const score=state.filter((s,i)=>s.checked && s.selected===QUESTIONS[i].answer).length;
-  document.getElementById('totalPill').textContent=QUESTIONS.length+' ข้อ';
-  document.getElementById('answeredPill').textContent='ตอบแล้ว '+answered;
-  document.getElementById('scorePill').textContent='คะแนน '+score+'/'+checked;
-  const pct=Math.round(answered/QUESTIONS.length*100);
-  document.getElementById('bar').style.width=pct+'%'; document.getElementById('progressText').textContent=pct+'%';
+  const answered = state.filter(s => s.selected !== null).length;
+  const checked = state.filter(s => s.checked).length;
+  const score = state.filter((s, i) => s.checked && s.selected === QUESTIONS[i].answer).length;
+  document.getElementById("totalPill").textContent = QUESTIONS.length + " ข้อ";
+  document.getElementById("answeredPill").textContent = "ตอบแล้ว " + answered;
+  document.getElementById("scorePill").textContent = "คะแนน " + score + "/" + checked;
+  const pct = QUESTIONS.length ? Math.round(answered / QUESTIONS.length * 100) : 0;
+  document.getElementById("bar").style.width = pct + "%";
+  document.getElementById("progressText").textContent = pct + "%";
 }
-document.getElementById('search').addEventListener('input', render);
-document.getElementById('topic').addEventListener('change', render);
-document.getElementById('mode').addEventListener('change', render);
-applyHeaderState(); prepareChoices(); buildTopics(); render();
+
+buildTopics();
+render();
 </script>
-</body></html>
+</body>
+</html>
