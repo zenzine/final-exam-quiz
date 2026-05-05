@@ -14,13 +14,13 @@ main{max-width:1120px;margin:18px auto;padding:0 18px 40px}.notice{background:#f
 <header id="pageHeader"><div class="wrap header-main"><div class="hide-when-compact"><h1>RTG223: การกำกับดูแลความปลอดภัยทางรังสี</h1><div class="sub">Multiple choice ภาษาไทย + technical terms ภาษาอังกฤษ | Hard Mode | ครอบคลุมกฎหมาย ระบบกำกับดูแล RSO dose limit transport emergency และ incident cases</div></div><div class="stats"><span class="pill" id="totalPill">0 ข้อ</span><span class="pill" id="answeredPill">ตอบแล้ว 0</span><span class="pill" id="scorePill">คะแนน 0/0</span></div><button class="toggleHeader" id="toggleHeader" onclick="toggleHeader()">ซ่อนแถบด้านบน</button></div>
 <div class="wrap controls hide-when-compact"><input id="search" placeholder="ค้นหา เช่น IAEA, licensing, RSO, dose limit, Co-60, Cs-137"><select id="topic"><option value="all">ทุกหัวข้อ</option></select><select id="mode"><option value="all">แสดงทุกข้อ</option><option value="unanswered">เฉพาะยังไม่ตอบ</option><option value="wrong">เฉพาะข้อที่ผิด</option><option value="correct">เฉพาะข้อที่ถูก</option></select></div>
 <div class="wrap actions hide-when-compact">
+<a class="btn" href="index.html">← กลับหน้าเลือก Quiz</a>
 <button class="btn" onclick="showAllAnswers()">เฉลยทั้งหมด</button>
 <button class="btn" onclick="hideAllAnswers()">ซ่อนเฉลย</button>
 <button class="btn" onclick="shuffleQuestions()">สุ่มลำดับข้อ</button>
 <button class="btn" onclick="shuffleChoices()">สลับ Choice</button>
 <button class="btn" onclick="resetChoiceOrder()">รีเซ็ต Choice</button>
 <button class="btn" onclick="resetAnswers()">เริ่มใหม่</button>
-<a class="btn" href="index.html" style="text-decoration:none;color:#1f2937">กลับหน้าเมนู</a>
 </div></header>
 <main><div class="notice"><b>แนวฝึกสอบ:</b> ชุดนี้ตั้งใจทำให้ช้อยใกล้เคียงกัน ไม่เดาง่าย และครอบคลุมเนื้อหาทุกช่วงของไฟล์ เหมาะสำหรับทบทวนก่อนสอบจริง</div><div id="quiz" class="grid"></div></main><div class="floating"><button class="floatBtn" onclick="scrollTo({top:0,behavior:'smooth'})">ขึ้นบน</button></div>
 <script>
