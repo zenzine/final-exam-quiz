@@ -13,25 +13,143 @@ main{max-width:1120px;margin:18px auto;padding:0 18px 40px}.notice{background:#f
 </style></head><body>
 <header id="pageHeader"><div class="wrap header-main"><div class="hide-when-compact"><h1>RTG223 Hard Quiz: Design of Facilities and Shielding in Hospitals</h1><div class="sub">30 ข้อแบบยาก | ตัวเลือกใกล้เคียงกัน | ภาษาไทย + technical terms ภาษาอังกฤษ | เน้นคิดแบบข้อสอบมหาลัย</div></div><div class="stats"><span class="pill" id="totalPill">0 ข้อ</span><span class="pill" id="answeredPill">ตอบแล้ว 0</span><span class="pill" id="scorePill">คะแนน 0/0</span></div><button class="toggleHeader" id="toggleHeader" onclick="toggleHeader()">ซ่อนแถบด้านบน</button></div>
 <div class="wrap controls hide-when-compact"><input id="search" placeholder="ค้นหา เช่น LINAC, PET, I-131, Hot Lab, occupancy factor"><select id="topic"><option value="all">ทุกหัวข้อ</option></select><select id="mode"><option value="all">แสดงทุกข้อ</option><option value="unanswered">เฉพาะยังไม่ตอบ</option><option value="wrong">เฉพาะข้อที่ผิด</option><option value="correct">เฉพาะข้อที่ถูก</option></select></div>
-<div class="wrap actions hide-when-compact"><button class="btn" onclick="showAllAnswers()">เฉลยทั้งหมด</button><button class="btn" onclick="hideAllAnswers()">ซ่อนเฉลย</button><button class="btn" onclick="shuffleQuestions()">สุ่มลำดับข้อ</button><button class="btn" onclick="resetAnswers()">เริ่มใหม่</button></div></header>
+<div class="wrap actions hide-when-compact">
+<button class="btn" onclick="showAllAnswers()">เฉลยทั้งหมด</button>
+<button class="btn" onclick="hideAllAnswers()">ซ่อนเฉลย</button>
+<button class="btn" onclick="shuffleQuestions()">สุ่มลำดับข้อ</button>
+<button class="btn" onclick="shuffleChoices()">สลับ Choice</button>
+<button class="btn" onclick="resetChoiceOrder()">รีเซ็ต Choice</button>
+<button class="btn" onclick="resetAnswers()">เริ่มใหม่</button>
+</div>
 <main><div class="notice"><b>เวอร์ชันยากขึ้น:</b> ตัวเลือกถูกปรับให้ความยาวใกล้กันมากขึ้น และใช้ distractors ที่เป็นคำ technical term จริง เพื่อกันการเดาจาก “ข้อไหนยาวสุดข้อนั้นถูก” เหมาะสำหรับซ้อมก่อนเข้าห้องสอบ</div><div id="quiz" class="grid"></div></main><div class="floating"><button class="floatBtn" onclick="scrollTo({top:0,behavior:'smooth'})">ขึ้นบน</button></div>
 <script>
 const originalQuestions = [{"topic": "Radiation areas & regulations", "page": 5, "question": "ห้องข้างเครื่อง LINAC ที่คำนวณ dose ผ่าน barrier ได้ใกล้ 1 mSv/year แต่ไม่ใช่ห้องรักษา ควรตีความเป็นพื้นที่ใดตามแนวคิดในไฟล์", "choices": ["Controlled area เพราะอยู่ติดแหล่งรังสีและต้องจำกัด entry เสมอ", "Supervised area เพราะ occupational exposure conditions ถูก keep under review", "Public area เพราะค่าไม่เกิน worker dose limit จึงไม่ต้องมี monitoring", "Unrestricted storage เพราะ barrier ทำให้ไม่มีความเสี่ยงจาก radiation exposure"], "answer": 1, "explanation": "Supervised area คือพื้นที่ที่ไม่ใช่ controlled area แต่สภาวะ occupational exposure ต้องถูกติดตาม/ทบทวน แม้โดยปกติไม่ต้องใช้มาตรการเฉพาะเข้มเท่า controlled area"}, {"topic": "Controlled vs Supervised area", "page": 6, "question": "ข้อใดเป็นเหตุผลที่ทำให้ brachytherapy source preparation room ถูกจัดเป็น Controlled area ได้เหมาะสมที่สุด", "choices": ["เพราะมี source handling และอาจต้องใช้ specific protection measures เพื่อคุม exposure/contamination", "เพราะเป็นพื้นที่ที่คนทั่วไปเข้าออกมากจึงต้องติดป้ายเตือนเพื่อความสะดวก", "เพราะเป็นพื้นที่ที่ dose ต่ำกว่า public limit แต่ต้องติดตามเป็นครั้งคราวเท่านั้น", "เพราะเป็นห้อง control console ที่มี shielding แล้วจึงไม่ต้องมีมาตรการเพิ่มเติม"], "answer": 0, "explanation": "Controlled area ใช้กับพื้นที่ที่ต้องควบคุม exposure หรือป้องกันการแพร่ contamination; brachytherapy source preparation มีการจัดการต้นกำเนิดรังสีโดยตรง"}, {"topic": "Shielding purpose", "page": 9, "question": "ถ้าโรงพยาบาลออกแบบผนังห้อง X-ray ให้หนาพอเฉพาะด้านที่ beam ยิงตรง แต่ละเลยด้าน console booth ข้อผิดพลาดหลักคืออะไร", "choices": ["เข้าใจ primary barrier ถูกต้องแต่ละเลย secondary barrier ที่รับ scatter และ leakage radiation", "ใช้ occupancy factor มากเกินไปจนทำให้ shielding บางกว่าความเป็นจริง", "สับสนระหว่าง RF shielding ของ MRI กับ acoustic insulation ใน treatment room", "เข้าใจว่า concrete ใช้ได้เฉพาะ CT จึงไม่สามารถใช้ใน diagnostic radiology"], "answer": 0, "explanation": "Primary barrier รับ direct beam ส่วน secondary barrier ป้องกัน scatter/leakage เช่นบริเวณ operator booth/console"}, {"topic": "Shielding materials", "page": 10, "question": "สถานการณ์ใดจับคู่ shielding material กับ use case ได้ถูกต้องที่สุดตามไฟล์", "choices": ["Tungsten ใช้กับ nuclear medicine syringe shields/collimators เพราะ density สูงกว่า lead", "Barium plaster ใช้เป็นหลักใน LINAC เพราะลด high-energy photon ได้ดีที่สุดเสมอ", "Concrete ใช้กับ thyroid shield เพราะบางและยืดหยุ่นกว่า lead apron", "Copper ใช้กับ X-ray wall shielding เพราะ attenuation ต่อ diagnostic X-ray สูงกว่า tungsten"], "answer": 0, "explanation": "ไฟล์ระบุ tungsten มี density สูงกว่า lead ใช้ใน syringe shields, radiation collimators และ transport containers; ส่วน concrete เหมาะกับ LINAC/therapy rooms"}, {"topic": "Shielding thickness factors", "page": 12, "question": "ถ้าเครื่อง X-ray ใช้ kVp สูงขึ้นและ workload เพิ่มขึ้น แต่ห้องข้างเคียงเปลี่ยนจาก office เป็น stairwell ผลต่อ shielding calculation ควรคิดอย่างไร", "choices": ["Energy/workload ทำให้ต้องการ shielding มากขึ้น แต่ occupancy factor ที่ต่ำลงอาจลดความหนาที่จำเป็นของด้านนั้น", "ทุกปัจจัยหักล้างกันหมดจึงใช้ lead equivalent เดิมได้โดยไม่ต้องคำนวณใหม่", "การเปลี่ยน adjacent area ไม่มีผล เพราะ shielding ขึ้นกับ kVp เพียงอย่างเดียว", "workload มีผลเฉพาะ nuclear medicine ไม่เกี่ยวกับ diagnostic X-ray room"], "answer": 0, "explanation": "ความหนา shielding ขึ้นกับ energy level, workload, distance และ occupancy factor; stairwell มี T ต่ำกว่า office จึงลด requirement บางด้านได้"}, {"topic": "Occupancy factor", "page": 13, "question": "พื้นที่ใดควรใช้ Occupancy factor (T) สูงสุดเมื่อเทียบกับตัวเลือกอื่นตามตารางในไฟล์", "choices": ["Nurse station ที่มีคนใช้งานต่อเนื่องใกล้ radiation source", "Adjacent corridor ที่มีคนเดินผ่านเป็นช่วงๆ ระหว่างวัน", "Restroom ที่อยู่ติดห้องถ่ายภาพแต่ใช้งานไม่ต่อเนื่อง", "Stairwell ที่มีคนผ่านน้อยและอยู่ไม่นานในแต่ละครั้ง"], "answer": 0, "explanation": "T=1.0 ใช้กับ continuously occupied areas เช่น offices, nurse stations, waiting rooms, exam rooms"}, {"topic": "Diagnostic department layout", "page": 21, "question": "ข้อใดเป็น layout ที่สอดคล้องกับ diagnostic department design มากที่สุด", "choices": ["Reception/waiting อยู่ทางเข้าและห่าง radiation zones; X-ray/CT มี lead-lined barriers; MRI มี RF shielding", "Waiting area อยู่หลัง primary beam; ultrasound ต้องใช้ lead-lined wall; MRI ใช้ lead glass กัน X-ray", "Changing room รวมทุกเพศเพื่อลดพื้นที่; CT console อยู่ใน scan room เพื่อเห็นผู้ป่วยชัดขึ้น", "Office/report room อยู่ใน high-radiation zone เพื่อให้ radiologist เข้าถึงภาพได้เร็วที่สุด"], "answer": 0, "explanation": "ไฟล์ระบุ reception/waiting ควรอยู่ทางเข้าและ away from radiation exposure zones; X-ray/CT ต้องมี lead-lined shielding; MRI ใช้ RF shielding/Faraday cage"}, {"topic": "Diagnostic support areas", "page": 22, "question": "เหตุผลใดทำให้ office/report room ของ radiologist ควรวางใน low-radiation zone", "choices": ["เพื่อให้การ review/interpret images เกิดขึ้นโดยลด unnecessary exposure ตามหลัก radiation safety", "เพื่อให้ radiologist อยู่ใกล้ primary beam มากที่สุดเวลาสั่ง protocol", "เพื่อใช้ report room เป็น secondary barrier แทน lead-lined wall ได้โดยตรง", "เพื่อให้ radioactive waste ถูกเก็บรวมกับ contrast media และ imaging equipment"], "answer": 0, "explanation": "หน้า 22 ระบุ office/report room สำหรับทบทวนและแปลผลภาพควรอยู่ในเขตรังสีต่ำเพื่อให้ได้รับรังสีน้อยที่สุด"}, {"topic": "X-ray room design", "page": 18, "question": "ในการออกแบบ X-ray room ข้อใดเป็นชุดองค์ประกอบที่ถูกต้องที่สุด", "choices": ["Lead/lead-lined drywall, lead-lined doors/windows, operator booth และคำนวณจาก workload-distance-occupancy", "RF shielding, helium vent, acoustic insulation และ magnetic shielding เป็นองค์ประกอบหลักทั้งหมด", "Dedicated toilet to delay tank, non-porous surface และ zone monitor เป็นข้อกำหนดหลักของห้อง X-ray ทั่วไป", "Maze entrance, emergency off button ภายใน bunker และ thick concrete เป็นมาตรฐานขั้นต่ำของ diagnostic X-ray ทุกห้อง"], "answer": 0, "explanation": "หน้า 18 ระบุ X-ray room ใช้ผนังบุตะกั่ว/lead drywall, ประตู/หน้าต่าง lead-lined, operator booth และ shielding calculation ตาม workload, distance, occupancy"}, {"topic": "CT room design", "page": 19, "question": "ข้อใดเป็นการตีความ CT shielding requirement ได้เหมาะสมที่สุด", "choices": ["1.5–2.0 mm Pb เป็น typical range แต่ต้องปรับตาม workload และ occupancy ของพื้นที่ข้างเคียง", "CT ใช้ X-ray ต่ำกว่า general radiography จึงไม่ต้องมี lead-equivalent material รอบห้อง", "Control room ของ CT ควรเปิดโล่งเพื่อให้ผู้ควบคุมเข้าถึงผู้ป่วยได้ทันทีระหว่าง scan", "CT room ใช้ RF shielding เป็นหลักและไม่ต้องแยก control room ด้วย lead glass"], "answer": 0, "explanation": "ไฟล์ระบุ CT ใช้ X-rays ปริมาณสูง ต้องมี shielding ที่เหมาะสม โดยทั่วไป 1.5–2.0 mm Pb และแยก control room ด้วย lead glass"}, {"topic": "MRI room design", "page": 20, "question": "นักศึกษาเสนอให้ใช้ lead wall หนาแทน Faraday cage ใน MRI room เพื่อป้องกันภาพรบกวน ข้อโต้แย้งใดถูกที่สุด", "choices": ["ปัญหาหลักของ MRI คือ RF interference จึงใช้ copper/aluminium RF shielding ไม่ใช่ lead สำหรับ ionizing radiation", "Lead wall จะเพิ่มความปลอดภัยเพราะ MRI สร้าง high-energy photon มากกว่า PET", "Faraday cage ใช้เฉพาะ ultrasound room ส่วน MRI ต้องใช้ delay tank และ contamination control", "RF shielding มีไว้ลด scatter radiation จากผู้ป่วยหลังได้รับ radiopharmaceuticals"], "answer": 0, "explanation": "MRI ไม่ใช้ ionizing radiation; ห้อง MRI ต้องมี RF shielding ด้วย copper/aluminium เพื่อกัน electromagnetic interference และอาจมี magnetic shielding/ฉนวนเสียง"}, {"topic": "Radiation therapy design", "page": 27, "question": "ใน radiation therapy bunker การออกแบบ maze หรือ shielded door มีเหตุผลหลักใด", "choices": ["ลด exposure ที่ทางเข้า/ออกของห้อง LINAC หรือ HDR โดยยังคง workflow และ access control", "เพิ่ม occupancy factor ของ corridor เพื่อให้คำนวณ shielding ง่ายขึ้น", "ทำหน้าที่เป็น RF shielding สำหรับลด electromagnetic interference ของ LINAC", "ใช้แทน primary barrier ทั้งหมดเพราะ maze ทำให้ไม่ต้องออกแบบ wall shielding"], "answer": 0, "explanation": "ไฟล์ระบุ radiation therapy ควร incorporate maze designs or shielded doors สำหรับ LINAC/HDR rooms ร่วมกับ primary/secondary barriers"}, {"topic": "Radiation therapy workflow", "page": 28, "question": "ข้อใดสะท้อน workflow efficiency ใน radiation therapy department ได้ดีที่สุด", "choices": ["ลดระยะทางระหว่าง simulation, planning และ treatment พร้อมแยก public areas จาก high-radiation areas", "ให้ผู้ป่วยเดินผ่าน Hot Lab ก่อนทุกครั้งเพื่อเพิ่มการควบคุม contamination", "รวม consultation room กับ treatment bunker เพื่อให้ทีมทำงานรวดเร็วขึ้น", "ลด signage ในแผนกเพื่อไม่ให้ผู้ป่วยกังวลเรื่อง radiation hazard"], "answer": 0, "explanation": "หน้า 28 เน้น patient flow ที่ smooth/logical จาก consultation ถึง treatment ลด travel distance และแยก public/high-radiation areas"}, {"topic": "Staff safety & accessibility", "page": 29, "question": "ข้อใดเป็นมาตรการที่ตรงกับ staff safety/accessibility ใน radiation therapy มากที่สุด", "choices": ["Console/control room ติดกับ treatment room พร้อม CCTV และเข้าถึง emergency shut-offs/interlocks ได้ง่าย", "ให้ staff เข้า treatment room ระหว่าง beam-on เพื่อช่วยจัดท่าผู้ป่วยแบบ real time", "วาง interlock เฉพาะนอกอาคารเพื่อป้องกัน unauthorized parking ใกล้ bunker", "แยก staff pathway ออกจาก bunker โดยไม่ต้องมี audiovisual monitoring หรือ emergency system"], "answer": 0, "explanation": "หน้า 29 ระบุ control room adjacent to treatment room with CCTV, easy access to emergency shut-offs/interlocks และ staff circulation pathways"}, {"topic": "Treatment room features", "page": 33, "question": "ถ้าประตูห้อง treatment ถูกเปิดระหว่าง irradiation ระบบใดควรทำงานโดยตรงเพื่อหยุดหรือ disable radiation", "choices": ["Interlocks ที่เชื่อมกับ door status ของห้องรักษา", "Occupancy factor table ที่ลดค่า T อัตโนมัติ", "Faraday cage ที่ short circuit RF signal จากเครื่อง", "Lead-lined cabinet สำหรับเก็บ PPE ในห้อง control"], "answer": 0, "explanation": "Well-designed treatment room มี interlocks เพื่อ disable radiation if doors are opened และมี alarm/emergency off buttons"}, {"topic": "Treatment room features", "page": 33, "question": "ข้อใดไม่ควรใช้แทน emergency off buttons ในห้อง treatment room", "choices": ["ป้าย warning sign เพียงอย่างเดียวที่ติดอยู่หน้าประตูห้อง", "ปุ่ม emergency off ที่เข้าถึงได้ทั้งในและนอกห้อง", "Audible alarm เตือนเมื่อมีการใช้ radiation", "Light beam system ที่หยุด exposure หากมีคนเข้า"], "answer": 0, "explanation": "ป้ายเตือนอย่างเดียวไม่ใช่ active safety system และไม่สามารถหยุด beam ได้ ต่างจาก emergency off/interlock/light beam system"}, {"topic": "Nuclear medicine design", "page": 43, "question": "แนวคิดใดเป็นหัวใจของ nuclear medicine department design เมื่อเทียบกับ diagnostic radiology ทั่วไป", "choices": ["ต้องคุมทั้ง external exposure, internal exposure, contamination และ radioactive waste pathway", "สนใจเฉพาะ primary beam orientation เพราะผู้ป่วยไม่ได้เป็น source หลังฉีดสาร", "ใช้ RF shielding เป็นหลักเพราะ radiopharmaceuticals รบกวนสนามแม่เหล็ก", "ไม่ต้องแยกพื้นที่ผู้ป่วยกับ Hot Lab เพราะ activity อยู่ใน detector เท่านั้น"], "answer": 0, "explanation": "Nuclear medicine ใช้ radiopharmaceuticals จึงต้องคุม exposure, contamination, workflow และ radioactive waste"}, {"topic": "Radioactive waste & contamination", "page": 55, "question": "ข้อใดเหมาะกับการจัดการ radioactive waste ใน nuclear medicine มากที่สุด", "choices": ["แยก solid, liquid และ biological radioactive waste พร้อม label/access control ที่ชัดเจน", "รวม radioactive waste กับ general trash หาก dose meter อ่านได้ต่ำในวันนั้น", "เก็บ waste ใกล้ waiting area เพื่อให้ขนย้ายออกจากแผนกได้เร็ว", "ใช้ delay tank เฉพาะกับ Tc-99m syringe shield ไม่เกี่ยวกับของเหลว"], "answer": 0, "explanation": "หน้า 55 กล่าวถึงพื้นที่ waste storage/decay-in-storage และแยก radioactive solid, liquid, biological waste พร้อม signage/access control"}, {"topic": "Gamma camera & SPECT", "page": 56, "question": "ข้อใดถูกต้องที่สุดสำหรับ Gamma Camera/SPECT room design", "choices": ["ขนาดประมาณ 6 m × 5 m, shielding ขึ้นกับ radionuclide energy เช่น Tc-99m ~140 keV และพิจารณา T factor", "ใช้ 10–15 cm lead เป็นมาตรฐานเสมอ เพราะ SPECT photon เท่ากับ PET 511 keV", "ไม่ต้องมี control room visibility เพราะกล้อง gamma ไม่เกี่ยวกับ patient monitoring", "ต้องออกแบบเหมือน MRI โดยใช้ copper RF cage เป็น shielding หลักสำหรับ radionuclides"], "answer": 0, "explanation": "หน้า 56 ระบุขนาดขั้นต่ำประมาณ 6×5 m, shield ตามพลังงาน radionuclide เช่น Tc-99m ~140 keV, มักใช้ 2–3 mm Pb และต้องคิด adjacent occupancy"}, {"topic": "PET room design", "page": 58, "question": "เหตุผลใดทำให้ PET room ต้องการ shielding หนากว่า SPECT/gamma camera room", "choices": ["PET ใช้ positron emitters เช่น F-18 ที่ให้ annihilation photons 511 keV ซึ่งพลังงานสูงกว่า Tc-99m", "PET ใช้ ultrasound frequency สูงจึงทะลุผนังได้มากกว่า gamma ray", "SPECT ใช้ beta emitter ที่ทำให้ผู้ป่วยเป็น source มากกว่า PET เสมอ", "PET ไม่ต้องใช้ radionuclide แต่ scanner สร้าง primary beam จาก LINAC ภายในเครื่อง"], "answer": 0, "explanation": "หน้า 58 ระบุ PET uses high-energy positron emitters เช่น F-18, 511 keV photons และต้อง shielding หนากว่า SPECT/gamma camera"}, {"topic": "PET room design", "page": 58, "question": "ข้อใดเป็น requirement ด้าน room size/layout ของ PET room ตามไฟล์", "choices": ["ขั้นต่ำ 6 m × 6 m หรือใหญ่กว่า รองรับ PET/CT scanner, stretcher, staff circulation และ shielded entry", "ขั้นต่ำ 25–30 m² เท่านั้น และไม่ต้องรองรับ emergency access เพราะผู้ป่วยนอนนิ่ง", "ประมาณ 6 m × 5 m เท่ากับ SPECT เสมอ เพราะ detector gantry หมุนเหมือนกัน", "ขนาดเท่า ultrasound room ได้ เพราะ PET detector ไม่สร้าง ionizing radiation"], "answer": 0, "explanation": "หน้า 58 ระบุ PET room recommended minimum size 6 m × 6 m or larger และต้องมีพื้นที่สำหรับ scanner, stretcher, circulation, shielded entry/emergency access/console visibility"}, {"topic": "Hot Lab design", "page": 60, "question": "Hot Lab ที่ดีควรจัด workflow แบบใดเพื่อลด error, exposure และ contamination spread", "choices": ["Receiving → Preparation → Dispensing → Waste Handling แบบ unidirectional workflow", "Waste Handling → Dispensing → Receiving → Preparation เพื่อให้ของเสียออกก่อนเสมอ", "Preparation อยู่รวมกับ patient waiting area เพื่อให้ส่งสารได้เร็วและลดระยะทาง", "Dispensing อยู่ท้าย corridor สาธารณะเพื่อลดการเข้าถึงของ staff ใน controlled zone"], "answer": 0, "explanation": "หน้า 60 ระบุ Hot Lab ควรออกแบบเป็น unidirectional workflow: Receiving → Preparation → Dispensing → Waste Handling"}, {"topic": "Hot Lab shielding", "page": 60, "question": "ข้อใดเป็นชุดอุปกรณ์/องค์ประกอบ shielding ที่สัมพันธ์กับ Hot Lab มากที่สุด", "choices": ["Lead-lined cabinets, tungsten vial shields, shielded dose calibrator station และ radiation survey meters", "Faraday cage, helium vent, acoustic insulation และ magnetic shielding coils", "Maze entrance, primary barrier for useful beam และ beam stopper ของ LINAC", "Dedicated toilet, delay tank และ non-porous patient furniture เป็นแกนหลักทุกส่วน"], "answer": 0, "explanation": "หน้า 60 ระบุ built-in shielding เช่น lead-lined cabinets, tungsten vial shields รวมถึง shielded dose calibrator station และ survey meters"}, {"topic": "I-131 therapy room", "page": 62, "question": "ข้อใดอธิบายความเสี่ยงหลักของ I-131 high-dose therapy room ได้ครบที่สุด", "choices": ["ผู้ป่วยได้รับ activity สูง >30 mCi; I-131 ปล่อย beta และ high-energy gamma จึงต้อง isolation, shielding และ contamination control", "I-131 ให้เฉพาะ alpha radiation ที่หยุดได้ด้วยกระดาษ จึงเน้น privacy มากกว่า radiation protection", "ความเสี่ยงหลักมาจาก RF interference กับ gamma camera จึงใช้ copper/aluminium wall เป็นหลัก", "I-131 ใช้เฉพาะ diagnostic scan activity ต่ำ จึงไม่ต้อง restricted entry หรือ zone monitor"], "answer": 0, "explanation": "หน้า 62 ระบุผู้ป่วย inpatient รับ Iodine-131 activity สูง โดยทั่วไป >30 mCi และ I-131 emits beta and high-energy gamma radiation"}, {"topic": "I-131 room features", "page": 63, "question": "ทำไม I-131 therapy room ต้องมี dedicated toilet connected to delay tank", "choices": ["เพราะปัสสาวะผู้ป่วยอาจเป็น radioactive urine จึงต้องพัก/จัดการก่อนปล่อยออกสู่ระบบ", "เพื่อแยกน้ำเสียทั่วไปของ hospital จากน้ำยาล้าง film ในห้อง diagnostic radiology", "เพื่อกัก helium จาก MRI quench ไม่ให้กระจายสู่ patient area", "เพื่อเก็บ contrast media ที่ใช้ใน CT ให้ decay จนหมด activity"], "answer": 0, "explanation": "หน้า 63 ระบุห้องน้ำเฉพาะที่ต่อกับ delay tank สำหรับ radioactive urine จากผู้ป่วย I-131"}, {"topic": "I-131 room surfaces/monitoring", "page": 63, "question": "ข้อใดเป็นเหตุผลที่พื้นผิวใน I-131 therapy room ต้อง non-porous และ easy to decontaminate", "choices": ["ลดการดูดซึม/ค้างของ radioactive contamination บน wall, floor และ furniture หลังผู้ป่วยพักรักษา", "เพิ่มการสะท้อน RF signal เพื่อให้ CCTV เห็นผู้ป่วยได้ชัดขึ้น", "ทำให้ primary beam ของ LINAC สะท้อนออกจากผนังได้ดีขึ้น", "ลดเสียงดังของ MRI gradient coil ระหว่าง pulse sequence"], "answer": 0, "explanation": "I-131 therapy room ต้องควบคุม contamination; พื้นผิวไม่พรุนช่วยทำความสะอาดและ decontaminate ได้ง่าย"}, {"topic": "I-131 safety monitoring", "page": 64, "question": "ข้อใดเป็น safety/monitoring package ที่เหมาะสมสำหรับ I-131 high-dose therapy room", "choices": ["Restricted entry, radiation warning signage, zone monitor สำหรับ ambient dose และ communication system เช่น intercom", "Open access, ไม่มี signage เพื่อไม่ให้ผู้ป่วยกังวล, ใช้เฉพาะ window ธรรมดา", "RF cage, helium vent, magnetic shielding และ acoustic panel เป็น package หลัก", "Light beam system ที่หยุด exposure เมื่อเดินผ่าน กับ maze entrance เพียงอย่างเดียว"], "answer": 0, "explanation": "หน้า 64 ระบุ access control with restricted entry, radiation warning signage, zone monitor, emergency equipment และ communication system เช่น intercom"}, {"topic": "Integrated shielding judgment", "page": 66, "question": "ถ้าอาจารย์ถามว่า “ทำไม shielding ไม่ควรกำหนดความหนาเดียวกันทุกห้องในโรงพยาบาล” คำตอบใดดีที่สุด", "choices": ["เพราะต้อง tailor ตาม energy level, workload, occupancy ของ adjacent areas, equipment/source type และ regulatory standards", "เพราะทุกห้องใช้ radionuclide คนละชนิด แต่ equipment layout ไม่มีผลต่อ dose เลย", "เพราะ lead ใช้ได้เฉพาะ PET ส่วน concrete ใช้ได้เฉพาะ MRI จึงต้องแยกตามวัสดุ", "เพราะหลัก radiation protection สนใจเฉพาะ staff dose ไม่เกี่ยวกับ patient/public"], "answer": 0, "explanation": "สรุปหน้า 66 ระบุ design ต้องอิงมาตรฐาน หลัก radiation physics ชนิดเครื่อง/แหล่งกำเนิด และ shielding ต้องเหมาะกับ energy, workload, occupancy"}, {"topic": "Integrated exam scenario", "page": 66, "question": "ข้อใดเป็นการ prioritize safety design ได้ดีที่สุดเมื่อ facility มีทั้ง PET/CT, LINAC, Hot Lab และ I-131 room", "choices": ["แยก high-radiation/contamination-risk areas, จำกัด access, ออกแบบ shielding เฉพาะงาน, มี monitoring/QA/training ต่อเนื่อง", "ใช้ lead 2 mm ทุกห้องเท่ากันเพื่อความสม่ำเสมอและลดความซับซ้อนของการตรวจรับงาน", "วางทุกห้องติด waiting area เพื่อลด patient travel distance แม้จะเพิ่ม exposure risk", "ใช้เฉพาะ warning signs แทน engineering controls เพราะบุคลากรได้รับ training แล้ว"], "answer": 0, "explanation": "หน้า 66 สรุปว่าพื้นที่พิเศษ เช่น PET/CT, LINAC, Hot Lab, I-131 ต้องมี advanced shielding, contamination control, access restrictions, monitoring/QA/training"}, {"topic": "Dose control logic", "page": 12, "question": "ข้อใดสะท้อนหลักคิด ALARA ใน facility design ได้ดีที่สุดเมื่อห้องข้างเคียงมี occupancy สูง", "choices": ["เพิ่มความระมัดระวังด้าน barrier design เพราะคนอยู่บ่อยทำให้ cumulative exposure มีนัยสำคัญกว่า hallway ที่ผ่านชั่วคราว", "ลด shielding เพราะพื้นที่มีคนอยู่ประจำจึงตรวจพบความผิดปกติได้เร็วกว่า storage room", "วาง source ให้ใกล้ผนังติด office เพื่อให้ระยะทางสั้นและลด scatter ในห้องหลัก", "ใช้ warning light แทนการคำนวณ barrier เพราะ occupancy factor สูงทำให้คนหลีกเลี่ยงพื้นที่เอง"], "answer": 0, "explanation": "Occupancy สูงหมายถึงมีคนอยู่ในพื้นที่เป็นสัดส่วนเวลามากกว่า ต้องให้ความสำคัญกับ cumulative dose และ shielding ให้เหมาะสม"}];
 let questions = [...originalQuestions];
 let answers = JSON.parse(localStorage.getItem('rtg223_hard_answers')||'{}');
-function save(){localStorage.setItem('rtg223_hard_answers',JSON.stringify(answers));}
+let choiceOrders = JSON.parse(localStorage.getItem('rtg223_hard_choice_orders')||'{}');
+
+function save(){
+  localStorage.setItem('rtg223_hard_answers',JSON.stringify(answers));
+}
+
+function saveChoiceOrders(){
+  localStorage.setItem('rtg223_hard_choice_orders',JSON.stringify(choiceOrders));
+}
+
+function defaultOrder(q){
+  return q.choices.map((_,i)=>i);
+}
+
+function ensureChoiceOrders(){
+  questions.forEach(q=>{
+    if(!Array.isArray(choiceOrders[q.id]) || choiceOrders[q.id].length !== q.choices.length){
+      choiceOrders[q.id] = defaultOrder(q);
+    }
+  });
+  saveChoiceOrders();
+}
+
+function shuffleArray(arr){
+  for(let i=arr.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [arr[i],arr[j]]=[arr[j],arr[i]];
+  }
+  return arr;
+}
+
+function shuffleChoices(){
+  ensureChoiceOrders();
+  questions.forEach(q=>{
+    let newOrder = shuffleArray(defaultOrder(q));
+
+    // กันกรณีสุ่มแล้วได้ลำดับเดิม
+    if(newOrder.join(',') === choiceOrders[q.id].join(',') && newOrder.length > 1){
+      newOrder.push(newOrder.shift());
+    }
+
+    choiceOrders[q.id] = newOrder;
+  });
+  saveChoiceOrders();
+  render();
+}
+
+function resetChoiceOrder(){
+  if(confirm('รีเซ็ตลำดับ Choice กลับเป็นแบบเดิมใช่ไหม?')){
+    choiceOrders = {};
+    ensureChoiceOrders();
+    render();
+  }
+}
 function applyHeaderState(){const compact=localStorage.getItem('rtg223_hard_header_compact')==='1';document.getElementById('pageHeader').classList.toggle('compact',compact);document.getElementById('toggleHeader').textContent=compact?'แสดงแถบค้นหา':'ซ่อนแถบด้านบน'}
 function toggleHeader(){const compact=!document.getElementById('pageHeader').classList.contains('compact');localStorage.setItem('rtg223_hard_header_compact',compact?'1':'0');applyHeaderState()}
 function buildTopics(){const sel=document.getElementById('topic');[...new Set(questions.map(q=>q.topic))].sort().forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});}
 function filtered(){const s=document.getElementById('search').value.trim().toLowerCase();const t=document.getElementById('topic').value;const m=document.getElementById('mode').value;return questions.filter((q)=>{const id=q.id;const a=answers[id];const txt=(q.question+' '+q.choices.join(' ')+' '+q.topic+' page '+q.page).toLowerCase();if(s&&!txt.includes(s))return false;if(t!=='all'&&q.topic!==t)return false;if(m==='unanswered'&&a!==undefined)return false;if(m==='wrong'&&(a===undefined||a===q.answer))return false;if(m==='correct'&&a!==q.answer)return false;return true;});}
 function updateStats(){const total=questions.length;let answered=0,score=0;questions.forEach(q=>{if(answers[q.id]!==undefined){answered++; if(answers[q.id]===q.answer) score++;}});document.getElementById('totalPill').textContent=total+' ข้อ';document.getElementById('answeredPill').textContent='ตอบแล้ว '+answered;document.getElementById('scorePill').textContent='คะแนน '+score+'/'+answered;}
-function render(){const root=document.getElementById('quiz');const list=filtered();updateStats();root.innerHTML='';if(!list.length){root.innerHTML='<div class="card empty">ไม่พบข้อที่ตรงกับตัวกรอง</div>';return;}list.forEach((q)=>{const card=document.createElement('section');card.className='card';card.id='q-'+q.id;const a=answers[q.id];if(a!==undefined)card.classList.add('show');let choices=q.choices.map((c,ci)=>{let cls='choice';if(a!==undefined){if(ci===q.answer)cls+=' correct'; else if(ci===a)cls+=' wrong';}return `<button class="${cls}" onclick="choose(${q.id},${ci})"><b>${String.fromCharCode(65+ci)}.</b> ${c}</button>`}).join('');card.innerHTML=`<div class="meta"><span class="tag">ข้อ ${q.id} / ${questions.length}</span><span class="tag">${q.topic}${q.page?` | หน้า ${q.page}`:''}</span></div><div class="question">${q.question}</div><div class="choices">${choices}</div><div class="explanation"><b>เฉลย: ${String.fromCharCode(65+q.answer)}.</b> ${q.choices[q.answer]}<br>${q.explanation}</div><div class="footerRow"><span class="small">Hard mode: choices are intentionally close</span><button class="btn" onclick="toggleExplain(${q.id})">แสดง/ซ่อนเฉลยข้อนี้</button></div>`;root.appendChild(card);});}
-function choose(id,ci){answers[id]=ci;save();render();}
+function render(){
+  ensureChoiceOrders();
+
+  const root=document.getElementById('quiz');
+  const list=filtered();
+  updateStats();
+  root.innerHTML='';
+
+  if(!list.length){
+    root.innerHTML='<div class="card empty">ไม่พบข้อที่ตรงกับตัวกรอง</div>';
+    return;
+  }
+
+  list.forEach((q)=>{
+    const card=document.createElement('section');
+    card.className='card';
+    card.id='q-'+q.id;
+
+    const a=answers[q.id];
+    const order=choiceOrders[q.id] || defaultOrder(q);
+    const correctDisplayIndex=order.indexOf(q.answer);
+
+    if(a!==undefined) card.classList.add('show');
+
+    let choices=order.map((originalChoiceIndex,displayIndex)=>{
+      const c=q.choices[originalChoiceIndex];
+      let cls='choice';
+
+      if(a!==undefined){
+        if(originalChoiceIndex===q.answer) cls+=' correct';
+        else if(originalChoiceIndex===a) cls+=' wrong';
+      }
+
+      return `<button class="${cls}" onclick="choose(${q.id},${originalChoiceIndex})"><b>${String.fromCharCode(65+displayIndex)}.</b> ${c}</button>`;
+    }).join('');
+
+    card.innerHTML=`
+      <div class="meta">
+        <span class="tag">ข้อ ${q.id} / ${questions.length}</span>
+        <span class="tag">${q.topic}${q.page?` | หน้า ${q.page}`:''}</span>
+      </div>
+      <div class="question">${q.question}</div>
+      <div class="choices">${choices}</div>
+      <div class="explanation">
+        <b>เฉลย: ${String.fromCharCode(65+correctDisplayIndex)}.</b> ${q.choices[q.answer]}<br>
+        ${q.explanation}
+      </div>
+      <div class="footerRow">
+        <span class="small">Hard mode: choices are intentionally close</span>
+        <button class="btn" onclick="toggleExplain(${q.id})">แสดง/ซ่อนเฉลยข้อนี้</button>
+      </div>
+    `;
+
+    root.appendChild(card);
+  });
+}
 function toggleExplain(id){document.getElementById('q-'+id)?.classList.toggle('show')}
 function showAllAnswers(){document.querySelectorAll('.card').forEach(c=>c.classList.add('show'));}
 function hideAllAnswers(){document.querySelectorAll('.card').forEach(c=>c.classList.remove('show'))}
 function resetAnswers(){if(confirm('ล้างคำตอบทั้งหมดใช่ไหม?')){answers={};save();render();}}
 function shuffleQuestions(){for(let i=questions.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[questions[i],questions[j]]=[questions[j],questions[i]];}render();}
 document.getElementById('search').addEventListener('input',render);document.getElementById('topic').addEventListener('change',render);document.getElementById('mode').addEventListener('change',render);
-questions=questions.map((q,i)=>({...q,id:i+1}));applyHeaderState();buildTopics();render();
+questions=questions.map((q,i)=>({...q,id:i+1}));
+applyHeaderState();
+buildTopics();
+ensureChoiceOrders();
+render();
 </script></body></html>
