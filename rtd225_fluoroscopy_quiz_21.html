@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RTD225 Fluoroscopy Instrument Quiz</title>
+<style>
+:root{--bg:#f7f8fb;--card:#fff;--text:#1f2937;--muted:#667085;--line:#e5e7eb;--brand:#3758f9;--ok:#087443;--bad:#b42318;--soft:#eef2ff;--warn:#fff7ed}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;line-height:1.55}
+header{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);z-index:5;padding:14px 18px}header.compact{padding:8px 18px}header.compact .hide-when-compact{display:none!important}.wrap{max-width:1120px;margin:0 auto}.header-main{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}h1{font-size:22px;margin:0}.sub{color:var(--muted);font-size:14px}.stats{display:flex;gap:8px;flex-wrap:wrap}.pill{background:var(--soft);border-radius:999px;padding:8px 12px;font-weight:700;font-size:13px}.toggleHeader,.btn{border:1px solid var(--line);border-radius:999px;background:#fff;padding:9px 12px;cursor:pointer;font-weight:700;text-decoration:none;color:inherit}.toggleHeader{background:#f8fafc}.toggleHeader:hover,.btn:hover{border-color:#bbc3d4}.controls{display:grid;grid-template-columns:1.1fr .8fr .8fr;gap:10px;margin-top:14px}input,select{width:100%;border:1px solid var(--line);border-radius:12px;background:white;padding:12px 14px;font-size:14px}.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.actions .btn{border-radius:12px}main{max-width:1120px;margin:18px auto;padding:0 18px 40px}.notice{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:14px;color:#344054}.grid{display:grid;gap:14px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 1px 2px rgba(16,24,40,.04)}.meta{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-bottom:8px}.tag{background:#f2f4f7;border-radius:999px;padding:4px 9px}.question{font-weight:800;font-size:18px;margin:8px 0 14px}.choices{display:grid;gap:10px}.choice{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:#fff;cursor:pointer;text-align:left;font-size:15px}.choice:hover{border-color:#9aa7ff;background:#fbfcff}.choice.correct{border-color:#12b76a;background:#ecfdf3}.choice.wrong{border-color:#f04438;background:#fef3f2}.explanation{display:none;margin-top:12px;border-left:4px solid var(--brand);background:#f8faff;border-radius:12px;padding:12px;color:#344054}.show .explanation{display:block}.footerRow{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:14px;flex-wrap:wrap}.small{font-size:13px;color:var(--muted)}.empty{padding:28px;text-align:center;color:var(--muted)}.floating{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:8px;z-index:6}.floatBtn{border:0;border-radius:999px;padding:11px 14px;background:#1f2937;color:white;font-weight:800;box-shadow:0 8px 20px rgba(0,0,0,.18);cursor:pointer}@media(max-width:760px){header{padding:10px 12px}.controls{grid-template-columns:1fr}.question{font-size:16px}.toggleHeader{width:100%}header.compact .stats{display:none}main{padding:0 12px 32px}.card{padding:14px}.floating{right:12px;bottom:12px}}
+</style></head><body>
+<header id="pageHeader"><div class="wrap header-main"><div class="hide-when-compact"><h1>RTD225: Fluoroscopy Instrument</h1><div class="sub">Review Quiz 21 ข้อ | ภาษาไทย + technical terms อังกฤษ | เน้น Image Intensifier, FPD, DSA, X-ray tube และ Radiation Safety</div></div><div class="stats"><span class="pill" id="totalPill">0 ข้อ</span><span class="pill" id="answeredPill">ตอบแล้ว 0</span><span class="pill" id="scorePill">คะแนน 0/0</span></div><button class="toggleHeader" id="toggleHeader" onclick="toggleHeader()">ซ่อนแถบด้านบน</button></div>
+<div class="wrap controls hide-when-compact"><input id="search" placeholder="ค้นหา เช่น Image Intensifier, FPD, DSA, Flux Gain, Lead apron"><select id="topic"><option value="all">ทุกหัวข้อ</option></select><select id="mode"><option value="all">แสดงทุกข้อ</option><option value="unanswered">เฉพาะยังไม่ตอบ</option><option value="wrong">เฉพาะข้อที่ผิด</option><option value="correct">เฉพาะข้อที่ถูก</option></select></div>
+<div class="wrap actions hide-when-compact"><a class="btn" href="index.html">← กลับหน้าเลือก Quiz</a><button class="btn" onclick="showAllAnswers()">เฉลยทั้งหมด</button><button class="btn" onclick="hideAllAnswers()">ซ่อนเฉลย</button><button class="btn" onclick="shuffleQuestions()">สุ่มลำดับข้อ</button><button class="btn" onclick="shuffleChoices()">สลับ Choice</button><button class="btn" onclick="resetChoiceOrder()">รีเซ็ต Choice</button><button class="btn" onclick="resetAnswers()">เริ่มใหม่</button></div></header>
+<main><div class="notice"><b>วิธีใช้:</b> เลือกคำตอบแล้วระบบจะตรวจทันที สีเขียวคือคำตอบถูก สีแดงคือคำตอบที่เลือกผิด ชุดนี้ครอบคลุมองค์ประกอบและการทำงานของเครื่อง Fluoroscopy</div><div id="quiz" class="grid"></div></main><div class="floating"><button class="floatBtn" onclick="scrollTo({top:0,behavior:'smooth'})">ขึ้นบน</button></div>
+<script>
+const originalQuestions = [
+{
+  "topic": "Overview",
+  "page": 4,
+  "question": "จุดเด่นของระบบ Fluoroscopy เมื่อเทียบกับ Radiography ทั่วไปคือข้อใด?",
+  "choices": [
+    "ให้ high temporal resolution เพื่อดูภาพ real-time แม้จะมี SNR ที่ต่ำกว่า",
+    "ให้ high signal-to-noise ratio (SNR) สูงสุด",
+    "ใช้เวลาการถ่ายสั้นกว่า radiography ทั่วไป",
+    "ไม่ใช้รังสีเอกซ์ในการสร้างภาพ"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 4 ระบุว่า Fluoroscopy ให้ความสำคัญกับ high temporal resolution เพื่อดูภาพ internal body processes แบบ real-time ซึ่งยอมให้ Signal-to-noise ratio (SNR) ต่ำกว่าระบบ radiography ปกติได้ เพื่อรักษาปริมาณรังสีให้อยู่ในระดับที่ยอมรับได้"
+},
+{
+  "topic": "Fluorescent Phenomenon",
+  "page": 6,
+  "question": "ปรากฏการณ์ Fluorescent ในระบบ Fluoroscopy เกิดขึ้นในขั้นตอนใด?",
+  "choices": [
+    "เมื่อ X-ray ตกกระทบ fluorescent screen แล้วหน้าจอเปล่งแสง visible light ออกมา",
+    "เมื่ออิเล็กตรอนชนเป้าทังสเตนในหลอดรังสี",
+    "เมื่อ light photon แปลงเป็นอิเล็กตรอนใน photocathode",
+    "เมื่อนำภาพไปลบในระบบ DSA (Digital Subtraction Angiography)"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 6 ระบุว่า Fluorescent Phenomenon คือการเปล่งแสง (visible light) จากวัสดุเมื่อได้รับ/ดูดซับ high-energy radiation เช่น X-rays"
+},
+{
+  "topic": "X-ray Tube",
+  "page": 9,
+  "question": "ทำไมระบบ Fluoroscopy ถึงต้องใช้หลอดรังสีเอกซ์ที่มี high-heat capacity และ high-power generator?",
+  "choices": [
+    "เพราะใช้ลำรังสีเอกซ์แบบ continuous หรือ pulsed เป็นเวลานาน จึงต้องระบายความร้อนได้ดีมาก",
+    "เพราะต้องใช้ kVp ต่ำมากแต่ mAs สูงมาก",
+    "เพราะหลอดต้องสร้างรังสีตลอดเวลา 24 ชั่วโมง",
+    "เพราะขนาดของ focal spot ใหญ่กว่า radiography ทั่วไปมาก"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 9 ระบุว่า Fluoroscopic systems ใช้ continuous หรือ pulsed X-ray beams เป็นระยะเวลานานกว่า radiography ที่ปล่อยรังสีช่วงสั้นๆ จึงต้องการการกระจายความร้อน (heat dissipation) และ heat capacity ที่สูงกว่า"
+},
+{
+  "topic": "X-ray Tube",
+  "page": 9,
+  "question": "การเลือกใช้ Focal spot ในระบบ Fluoroscopy แบบ Double focal spot ข้อใดกล่าวถูกต้อง?",
+  "choices": [
+    "ใช้ Small focal spot สำหรับ fluoroscopic mode และ Large focal spot สำหรับ digital spot imaging",
+    "ใช้ Large focal spot เสมอเพื่อลดความร้อนของหลอดรังสี",
+    "ใช้ Small focal spot สำหรับ digital spot imaging เพื่อให้ภาพชัดเจนที่สุด",
+    "ใช้ Focal spot ขนาดเดียวกันหมดเพื่อความต่อเนื่องในการสร้างภาพ"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 9 ระบุการใช้งาน Double focal spot: Small focal spot ใช้สำหรับ fluoroscopic mode (เน้นรายละเอียดภาพขณะเคลื่อนไหวและใช้โดสต่ำกว่า) และ Large focal spot สำหรับ digital spot imaging (ต้องการ exposure สูงในเวลาสั้น)"
+},
+{
+  "topic": "Components",
+  "page": 10,
+  "question": "วัสดุใดนิยมนำมาทำส่วนบนของเตียง (Table Top) สำหรับเครื่อง Fluoroscopy เพื่อให้รังสีผ่านได้ดี?",
+  "choices": [
+    "Carbon fiber",
+    "Aluminum",
+    "Lead acrylic",
+    "Tungsten"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 10 ระบุอย่างชัดเจนว่า Table top ทำจาก Carbon fiber ซึ่งโปร่งต่อรังสี (radiolucent)"
+},
+{
+  "topic": "Image Receptor",
+  "page": 20,
+  "question": "ส่วนประกอบหลักของ Image Intensifier (XRII) ที่ทำหน้าที่แปลงรังสีเอกซ์ (X-rays) ให้กลายเป็นแสง (Visible light) ในขั้นตอนแรกคืออะไร?",
+  "choices": [
+    "Input phosphor (CsI:Tl)",
+    "Photocathode (Sb2Cs3)",
+    "Focusing electrodes",
+    "Output phosphor (ZnCdS:Ag)"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 25 ระบุกลไกการทำงานข้อ 1: Input Phosphor (CsI:Tl) ทำหน้าที่ดูดซับพลังงานและแปลง X-rays เป็นแสง (light)"
+},
+{
+  "topic": "Image Receptor",
+  "page": 25,
+  "question": "หน้าที่ของ Photocathode ใน Image Intensifier คืออะไร?",
+  "choices": [
+    "แปลง light photons เป็น electrons (ผ่าน photoelectric effect)",
+    "แปลง X-rays เป็น light photons",
+    "เร่งความเร็ว electrons ไปยัง anode",
+    "แปลง electrons กลับเป็น visible light"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 25 ระบุว่า Photocathode ทำจากสารประกอบ antimony และ cesium ทำหน้าที่แปลง light photons เป็น electrons ผ่านปรากฏการณ์ photoelectric effect"
+},
+{
+  "topic": "Image Receptor",
+  "page": 26,
+  "question": "Pincushion distortion (ภาพขอบบิดเบี้ยวเว้าเข้า) ใน Image Intensifier เกิดจากส่วนประกอบใดเป็นหลัก?",
+  "choices": [
+    "Focusing electrodes ที่ทำหน้าที่โฟกัสและเร่งอิเล็กตรอนไปยังหน้าจอ output ที่แบน",
+    "ความโค้งของ Input window เท่านั้น",
+    "การกระเจิงแสงของ Input phosphor",
+    "การแปลงสัญญาณของ CCD camera"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 26 ระบุว่า Focusing Electrodes เร่งและโฟกัสพลังงานอิเล็กตรอนให้เล็กลงไปที่ output screen ก่อให้เกิด minified, inverted image ซึ่งทำให้เกิด pincushion distortion"
+},
+{
+  "topic": "Image Receptor",
+  "page": 26,
+  "question": "Output Phosphor ของ Image Intensifier ทำจากวัสดุใด และทำหน้าที่อะไร?",
+  "choices": [
+    "ZnCdS:Ag ทำหน้าที่แปลงอิเล็กตรอนที่ถูกเร่งมาให้เป็น Visible light",
+    "CsI:Tl ทำหน้าที่แปลงรังสีเอกซ์เป็นแสง",
+    "Sb2Cs3 ทำหน้าที่แปลงแสงเป็นอิเล็กตรอน",
+    "Amorphous silicon ทำหน้าที่เก็บประจุไฟฟ้า"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 26 ระบุว่า Output Phosphor (ZnCdS:Ag) ทำหน้าที่แปลงอิเล็กตรอนที่ถูกเร่งความเร็ว (accelerated electrons) เป็น visible light"
+},
+{
+  "topic": "Image Intensification",
+  "page": 28,
+  "question": "ข้อใดคือความหมายของ Flux Gain (Electronic gain) ในกระบวนการ Image Intensification?",
+  "choices": [
+    "อัตราส่วนของจำนวน light photon ที่ output ต่อจำนวน light photon ที่ input ซึ่งได้จากการเพิ่มพลังงานจลน์ของอิเล็กตรอนที่ถูกเร่ง",
+    "การเพิ่มความสว่างที่เกิดจากการย่อขนาดภาพจาก input screen ไปยัง output screen",
+    "อัตราส่วนระหว่างเส้นผ่านศูนย์กลางของ input screen และ output screen",
+    "การลดลงของ noise เมื่อใช้อิเล็กโทรดโฟกัสลำอิเล็กตรอน"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 28 ระบุว่า Flux gain คืออัตราส่วน # light photon (output) / # light photon (input) ซึ่งเกิดจากการที่อิเล็กตรอนได้รับ kinetic energy จากการเร่ง (accelerate) มีค่า typical ~ 50"
+},
+{
+  "topic": "Image Intensification",
+  "page": 28,
+  "question": "จงคำนวณ Minification Gain หาก Input screen diameter เท่ากับ 15 cm และ Output screen diameter เท่ากับ 2.5 cm",
+  "choices": [
+    "36",
+    "6",
+    "225",
+    "12.5"
+  ],
+  "answer": 0,
+  "explanation": "ตามสมการหน้า 28: Minification gain = (Input diameter)² / (Output diameter)² = (15)² / (2.5)² = 225 / 6.25 = 36 หรือคิดเป็น (15/2.5)² = 6² = 36"
+},
+{
+  "topic": "Flat Panel Detector",
+  "page": 18,
+  "question": "ระบบ Flat Panel Detector (FPD) ใน Fluoroscopy แบบ Indirect solid state system ใช้ส่วนประกอบใดในการรับภาพ?",
+  "choices": [
+    "CsI phosphor ร่วมกับ amorphous silicon และ Thin film transistor (TFT)",
+    "X-ray Image Intensifier แบบสุญญากาศ",
+    "Photocathode และ Focusing electrodes",
+    "Barium Platinocyanide screen"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 18 อธิบายว่า FPD (indirect solid state system) จะใช้ CsI phosphor กับ amorphous silicon และ TFT ทำหน้าที่แปลง X-ray -> light -> electronic signal"
+},
+{
+  "topic": "Optical System",
+  "page": 27,
+  "question": "ข้อจำกัดของระบบ Fiber optic เมื่อเทียบกับ Lens system ใน Optical System คืออะไร?",
+  "choices": [
+    "Fiber optic ไม่สามารถทำ spot imaging หรือ cine recording (บันทึกวิดีโอ/ภาพเคลื่อนไหว) ผ่านกล้องเสริมได้",
+    "Fiber optic มีขนาดใหญ่เทอะทะและเปราะบางกว่า",
+    "Fiber optic เกิด pincushion distortion ได้ง่ายกว่า",
+    "Fiber optic ไม่สามารถใช้คู่กับ TV camera/CCD ได้"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 27 ระบุชัดเจนว่า Fiber optic system มีความกะทัดรัดและทนทานกว่า แต่มีข้อเสียคือ Cannot perform spot imaging or cine recording เหมือนระบบ Lens"
+},
+{
+  "topic": "System Types",
+  "page": 34,
+  "question": "หากต้องการลดปริมาณรังสีสะท้อน (Scattered radiation) ที่จะเข้าสู่ตาและคอ (lens, neck, head) ของแพทย์และผู้ปฏิบัติงาน ควรเลือกระบบ Fluoroscopy ที่มีการจัดเรียงเครื่องแบบใด?",
+  "choices": [
+    "Under-couch tube type (หลอดรังสีอยู่ใต้เตียง, detector อยู่บน)",
+    "Over-couch tube type (หลอดรังสีอยู่เหนือเตียง, detector อยู่ล่าง)",
+    "ระบบที่ใช้ Lens system โดยไม่ต้องมีฉากป้องกัน",
+    "ระบบ Stationary ที่ไม่มี C-arm"
+  ],
+  "answer": 0,
+  "explanation": "ตารางเปรียบเทียบหน้า 34 และกราฟหน้า 36 ระบุว่า Under-couch tube type จะมีรังสีสะท้อน (scattered radiation) ชนบริเวณ lower body ของบุคลากร ซึ่งหลีกเลี่ยง head/neck/lens ได้ดีกว่าแบบ Over-couch"
+},
+{
+  "topic": "DSA",
+  "page": 41,
+  "question": "กระบวนการ Digital Subtraction Angiography (DSA) ขั้นตอนใดที่ภาพหลอดเลือดจะปรากฏเด่นชัดโดยไม่มีโครงสร้างกระดูกบัง?",
+  "choices": [
+    "Subtracted Image (นำภาพ Fill ลบด้วย Mask ภาพต่อภาพ)",
+    "Mask Image (ภาพก่อนฉีดสารทึบรังสี)",
+    "Fill Image (ภาพหลังฉีดสารทึบรังสี)",
+    "Scout Image (ภาพถ่ายพื้นที่กว้างเพื่อวางแผน)"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 41 อธิบายขั้นตอน DSA: Step 3: Subtraction Process คือการนำ Fill Image ลบด้วย Mask Image (pixel-by-pixel) ซึ่งจะเอา background anatomy ออกไป เหลือเพียงหลอดเลือดที่เติม contrast"
+},
+{
+  "topic": "Radiation Safety",
+  "page": 46,
+  "question": "เพื่อลดปริมาณรังสีที่ผู้ป่วยได้รับ (Minimize Patient Dose) หลักการข้อใดนำมาปฏิบัติได้ถูกต้องที่สุด?",
+  "choices": [
+    "วาง Image receptor ให้ใกล้ผู้ป่วยที่สุดเพื่อลด air gap และรักษาให้หลอดรังสีอยู่ห่างผู้ป่วย",
+    "ใช้การขยายภาพ (Magnification) ระดับสูงสุดเสมอเพื่อให้ภาพชัดที่สุด",
+    "เปิด Collimator ให้กว้างที่สุดเพื่อให้ครอบคลุมทุกอวัยวะ ไม่ต้องถ่ายซ้ำ",
+    "วาง Image receptor ให้ไกลจากผู้ป่วยที่สุดเพื่อหลีกเลี่ยงการติดเชื้อ"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 46 ระบุ Best Practices: Maximizing distance ระหว่าง patient กับ X-ray source, วาง image receptor ให้ใกล้ผู้ป่วยที่สุด (minimize air gap), ใช้ magnification ให้น้อยที่สุด, และ Collimating เท่าที่จำเป็น"
+},
+{
+  "topic": "Radiation Safety",
+  "page": 45,
+  "question": "สำหรับผู้ปฏิบัติงาน (Operator) บริเวณใดที่ควรหลีกเลี่ยงการยืนเพื่อป้องกันรังสีสะท้อน (Scatter radiation) มากที่สุด?",
+  "choices": [
+    "บริเวณใกล้หลอดรังสีเอกซ์ (X-ray tube)",
+    "บริเวณใกล้ Image receptor",
+    "หลังฉากตะกั่วป้องกัน (Protective barrier)",
+    "บริเวณควบคุมเครื่องด้านนอกห้อง (Control console)"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 45 แนะนำให้ Optimize positioning โดย: Avoid standing near the X-ray tube where scatter radiation is highest และควรเข้าใกล้ฝั่ง Image receptor จะได้รับโดสน้อยกว่า"
+},
+{
+  "topic": "Dose Reduction",
+  "page": 47,
+  "question": "ฟังก์ชัน Last Image Hold (LIH) มีประโยชน์อย่างไรในระบบ Fluoroscopy รุ่นใหม่?",
+  "choices": [
+    "แสดงภาพฟลูออโรสโคปีล่าสุดค้างไว้บนจอภาพโดยไม่ต้องทำการฉายรังสีเอกซ์เพิ่ม ช่วยลด patient dose",
+    "ช่วยให้บันทึกภาพเคลื่อนไหวแบบ cine ได้ยาวนานขึ้นแบบไม่สิ้นสุด",
+    "ลดการกระเจิงของรังสีเอกซ์ในห้องตรวจโดยตรง",
+    "ทำหน้าที่แปลงสัญญาณแอนะล็อกเป็นดิจิทัลได้รวดเร็วขึ้น"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 47 ระบุว่า LIH Displays the most recent fluoroscopic image without additional radiation exposure ทำให้แพทย์สามารถดูภาพอ้างอิงได้โดยไม่ต้องเหยียบสวิตช์ปล่อยรังสีทิ้งไว้"
+},
+{
+  "topic": "Components",
+  "page": 27,
+  "question": "CCD (Charge-Coupled Device) หรือ TV Camera ในระบบ Image Capture ทำหน้าที่อะไร?",
+  "choices": [
+    "แปลง light photons ให้เป็นสัญญาณไฟฟ้า (electrical signals) และประมวลผลให้ภาพชัดขึ้น",
+    "แปลง X-rays ให้เป็น light photons โดยตรง",
+    "เร่งอิเล็กตรอนในสภาวะสุญญากาศให้ชนหน้าจอ output phosphor",
+    "ใช้เป็นรีโมทควบคุมการเคลื่อนที่ของเตียง C-arm"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 27 หัวข้อ Image Capture ระบุว่า TV camera/CCD Converts light photons into electrical signals และทำ noise reduction, contrast enhancement"
+},
+{
+  "topic": "Radiation Safety",
+  "page": 44,
+  "question": "อุปกรณ์ป้องกันรังสีแบบสวมใส่และติดตั้งที่ใช้ปกป้องผู้ปฏิบัติงาน (Operator) ในห้อง Fluoroscopy ตามภาพรวมถึงข้อใดบ้าง?",
+  "choices": [
+    "Lead apron, Thyroid shield, Protective glasses และ Protective curtains ที่เตียง",
+    "Carbon fiber table top, Aluminum filters, Grid แบบเคลื่อนที่ได้",
+    "Laser targeting, Electronic Caliper",
+    "Lead-lined walls เฉพาะกำแพงห้องเท่านั้น"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 44 (รูปภาพ) และหน้า 45 (เนื้อหา) ระบุว่าผู้ปฏิบัติงานต้องใช้ Lead apron, Thyroid shield, Protective glasses (Lead eyewear) รวมถึงมีการใช้ Protective curtains, Lower Body Shield และ Mobile Shield ช่วย"
+},
+{
+  "topic": "Contrast Media/DSA",
+  "page": 41,
+  "question": "ข้อควรระวังที่สำคัญที่สุดเพื่อให้ภาพในระบบ DSA (Digital Subtraction Angiography) ออกมาสมบูรณ์ ไม่เกิด misregistration artifacts คือข้อใด?",
+  "choices": [
+    "ผู้ป่วยต้องอยู่นิ่งที่สุดระหว่างการถ่ายภาพ Mask image และ Fill image",
+    "ต้องใช้หลอดแบบ Over-couch tube เท่านั้นเพื่อลด artifact",
+    "ต้องล้างแผ่นรับภาพ (Erase image plate) ทุกครั้งก่อนถ่ายภาพผู้ป่วยในฟลูออโรสโคปี",
+    "ต้องเพิ่มปริมาณรังสี (mAs) ขึ้นสองเท่าเสมอในขณะถ่าย Fill image"
+  ],
+  "answer": 0,
+  "explanation": "หน้า 41 ระบุว่าการทำ DSA (การนำภาพ Fill มาลบด้วย Mask) Requires patient stability to avoid misregistration artifacts หากผู้ป่วยขยับ ภาพกายวิภาคจะไม่ซ้อนทับกันพอดี ทำให้ลบแบคกราวด์ออกได้ไม่หมด"
+}
+];
+let questions = originalQuestions.map((q,i)=>({...q,id:i+1}));
+let answers = JSON.parse(localStorage.getItem('rtd225_fluoroscopy_answers')||'{}');
+let choiceOrders = JSON.parse(localStorage.getItem('rtd225_fluoroscopy_choice_orders')||'{}');
+
+function save(){localStorage.setItem('rtd225_fluoroscopy_answers',JSON.stringify(answers));}
+function saveChoiceOrders(){localStorage.setItem('rtd225_fluoroscopy_choice_orders',JSON.stringify(choiceOrders));}
+function defaultOrder(q){return q.choices.map((_,i)=>i);}
+function ensureChoiceOrders(){questions.forEach(q=>{if(!Array.isArray(choiceOrders[q.id])||choiceOrders[q.id].length!==q.choices.length){choiceOrders[q.id]=defaultOrder(q);}});saveChoiceOrders();}
+function shuffleArray(arr){for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}return arr;}
+function shuffleChoices(){ensureChoiceOrders();questions.forEach(q=>{let newOrder=shuffleArray(defaultOrder(q));if(newOrder.join(',')===choiceOrders[q.id].join(',')&&newOrder.length>1){newOrder.push(newOrder.shift());}choiceOrders[q.id]=newOrder;});saveChoiceOrders();render();}
+function resetChoiceOrder(){if(confirm('รีเซ็ตลำดับ Choice กลับเป็นแบบเดิมใช่ไหม?')){choiceOrders={};ensureChoiceOrders();render();}}
+function applyHeaderState(){const compact=localStorage.getItem('rtd225_fluoroscopy_header_compact')==='1';document.getElementById('pageHeader').classList.toggle('compact',compact);document.getElementById('toggleHeader').textContent=compact?'แสดงแถบค้นหา':'ซ่อนแถบด้านบน'}
+function toggleHeader(){const compact=!document.getElementById('pageHeader').classList.contains('compact');localStorage.setItem('rtd225_fluoroscopy_header_compact',compact?'1':'0');applyHeaderState()}
+function buildTopics(){const sel=document.getElementById('topic');[...new Set(questions.map(q=>q.topic))].sort().forEach(t=>{const o=document.createElement('option');o.value=t;o.textContent=t;sel.appendChild(o);});}
+function filtered(){const s=document.getElementById('search').value.trim().toLowerCase();const t=document.getElementById('topic').value;const m=document.getElementById('mode').value;return questions.filter(q=>{const a=answers[q.id];const txt=(q.question+' '+q.choices.join(' ')+' '+q.topic+' page '+q.page).toLowerCase();if(s&&!txt.includes(s))return false;if(t!=='all'&&q.topic!==t)return false;if(m==='unanswered'&&a!==undefined)return false;if(m==='wrong'&&(a===undefined||a===q.answer))return false;if(m==='correct'&&a!==q.answer)return false;return true;});}
+function updateStats(){let answered=0,score=0;questions.forEach(q=>{if(answers[q.id]!==undefined){answered++;if(answers[q.id]===q.answer)score++;}});document.getElementById('totalPill').textContent=questions.length+' ข้อ';document.getElementById('answeredPill').textContent='ตอบแล้ว '+answered;document.getElementById('scorePill').textContent='คะแนน '+score+'/'+answered;}
+function render(){ensureChoiceOrders();const root=document.getElementById('quiz');const list=filtered();updateStats();root.innerHTML='';if(!list.length){root.innerHTML='<div class="card empty">ไม่พบข้อที่ตรงกับตัวกรอง</div>';return;}list.forEach(q=>{const card=document.createElement('section');card.className='card';card.id='q-'+q.id;const a=answers[q.id];const order=choiceOrders[q.id]||defaultOrder(q);const correctDisplayIndex=order.indexOf(q.answer);if(a!==undefined)card.classList.add('show');const choices=order.map((originalChoiceIndex,displayIndex)=>{const c=q.choices[originalChoiceIndex];let cls='choice';if(a!==undefined){if(originalChoiceIndex===q.answer)cls+=' correct';else if(originalChoiceIndex===a)cls+=' wrong';}return `<button class="${cls}" onclick="choose(${q.id},${originalChoiceIndex})"><b>${String.fromCharCode(65+displayIndex)}.</b> ${c}</button>`;}).join('');card.innerHTML=`<div class="meta"><span class="tag">ข้อ ${q.id} / ${questions.length}</span><span class="tag">${q.topic}${q.page?` | หน้า ${q.page}`:''}</span></div><div class="question">${q.question}</div><div class="choices">${choices}</div><div class="explanation"><b>เฉลย: ${String.fromCharCode(65+correctDisplayIndex)}.</b> ${q.choices[q.answer]}<br>${q.explanation}</div><div class="footerRow"><span class="small">Review: ${q.topic}</span><button class="btn" onclick="toggleExplain(${q.id})">แสดง/ซ่อนเฉลยข้อนี้</button></div>`;root.appendChild(card);});}
+function choose(id,ci){answers[id]=ci;save();render();}
+function toggleExplain(id){document.getElementById('q-'+id)?.classList.toggle('show')}
+function showAllAnswers(){document.querySelectorAll('.card').forEach(c=>c.classList.add('show'))}
+function hideAllAnswers(){document.querySelectorAll('.card').forEach(c=>c.classList.remove('show'))}
+function resetAnswers(){if(confirm('ล้างคำตอบทั้งหมดใช่ไหม?')){answers={};save();render();}}
+function shuffleQuestions(){for(let i=questions.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[questions[i],questions[j]]=[questions[j],questions[i]];}render();}
+document.getElementById('search').addEventListener('input',render);document.getElementById('topic').addEventListener('change',render);document.getElementById('mode').addEventListener('change',render);applyHeaderState();buildTopics();ensureChoiceOrders();render();
+</script></body></html>
